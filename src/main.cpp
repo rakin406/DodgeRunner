@@ -12,8 +12,8 @@ int main()
 
     // Define the camera to look into our 3d world
     Camera3D camera = {0};
-    camera.position = (Vector3){0.0F, 10.0F, 10.0F}; // Camera position
-    camera.target = (Vector3){0.0F, 0.0F, 0.0F};     // Camera looking at point
+    camera.position = (Vector3){0.0F, 5.0F, 10.0F}; // Camera position
+    camera.target = (Vector3){0.0F, 0.0F, 0.0F};    // Camera looking at point
     camera.up = (Vector3){0.0F, 1.0F,
                           0.0F}; // Camera up vector (rotation towards target)
     camera.fovy = 45.0F;         // Camera field-of-view Y
@@ -36,6 +36,11 @@ int main()
 
         BeginMode3D(camera);
 
+        // Draw ground
+        DrawPlane((Vector3){0.0F, -2.0F, 0.0F}, (Vector2){8.0F, 32.0F},
+                  LIGHTGRAY);
+
+        // Draw cube
         player.draw();
 
         EndMode3D();
