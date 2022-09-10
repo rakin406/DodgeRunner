@@ -6,18 +6,19 @@
 class Player
 {
 public:
-    Player() { cubePosition = {0.0F, 0.0F, 0.0F}; }
+    Player();
 
     // Set player position
-    void setPlayerPosition(Vector3 newPosition) { cubePosition = newPosition; }
+    void setPlayerPosition(Vector3 newPosition) { position = newPosition; }
 
     // Get player position
-    Vector3 getPlayerPosition() { return cubePosition; }
+    Vector3 getPlayerPosition() { return position; }
 
+    void moveForward();
     void draw();
 
 private:
-    Vector3 cubePosition{};
+    Vector3 position;
 };
 
 #endif
