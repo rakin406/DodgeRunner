@@ -27,7 +27,8 @@ int main()
     while (!WindowShouldClose())
     {
         // Update
-        // TODO: Update your variables here
+        player.moveForward();
+        // TODO: Make camera follow player from behind
 
         // Draw
         BeginDrawing();
