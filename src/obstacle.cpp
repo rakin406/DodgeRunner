@@ -2,17 +2,19 @@
 #include "../include/constants.h"
 #include "raylib.h"
 
-Obstacle::Obstacle()
-{
-    Vector3 startingPosition = {0.0F, 0.0F, (float)-SCREEN.height};
-    this->setPosition(startingPosition);
-}
+Obstacle::Obstacle() { this->resetPosition(); }
 
 void Obstacle::moveTowardsViewer(float speed)
 {
     Vector3 newPosition = this->getPosition();
     newPosition.z += speed;
     this->setPosition(newPosition);
+}
+
+void Obstacle::resetPosition()
+{
+    Vector3 startingPosition = {0.0F, 0.0F, (float)-SCREEN.height};
+    this->setPosition(startingPosition);
 }
 
 void Obstacle::draw()

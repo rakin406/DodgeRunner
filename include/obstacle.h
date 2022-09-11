@@ -30,6 +30,9 @@ public:
      */
     void moveTowardsViewer(float speed);
 
+    // Reset obstacle position to starting point
+    void resetPosition();
+
     // Draw obstacle on screen
     void draw();
 
