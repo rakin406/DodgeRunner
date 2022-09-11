@@ -31,7 +31,7 @@ int main()
     while (!WindowShouldClose())
     {
         // Update
-        obstacle.moveTowardsViewer(1.0F);
+        obstacle.loopTowardsViewer(1.0F);
 
         // Draw
         BeginDrawing();

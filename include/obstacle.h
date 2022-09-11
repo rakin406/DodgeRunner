@@ -24,11 +24,12 @@ public:
     Vector3 getPosition() { return position; }
 
     /**
-     * Move obstacle towards viewer.
+     * Move obstacle towards viewer and reset position to starting point when
+     * obstacle reaches screen height.
      *
      * @param speed Movement speed of obstacle.
      */
-    void moveTowardsViewer(float speed);
+    void loopTowardsViewer(float speed);
 
     // Reset obstacle position to starting point
     void resetPosition();

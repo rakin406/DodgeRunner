@@ -4,11 +4,19 @@
 
 Obstacle::Obstacle() { this->resetPosition(); }
 
-void Obstacle::moveTowardsViewer(float speed)
+void Obstacle::loopTowardsViewer(float speed)
 {
     Vector3 newPosition = this->getPosition();
     newPosition.z += speed;
     this->setPosition(newPosition);
+
+    // TODO: Refactor this code to ACTUALLY reach screen height and NOT count on
+    // cube size.
+    // Reset position if obstacle reaches screen height
+    if (this->getPosition().z >= CUBE_SIZE * 2)
+    {
+        this->resetPosition();
+    }
 }
 
 void Obstacle::resetPosition()
