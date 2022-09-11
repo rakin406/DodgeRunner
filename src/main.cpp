@@ -1,3 +1,4 @@
+#include "../include/constants.h"
 #include "../include/obstacle.h"
 #include "../include/player.h"
 #include "raylib.h"
@@ -6,9 +7,6 @@
 int main()
 {
     // Initialization
-    const int SCREEN_WIDTH = 1000;
-    const int SCREEN_HEIGHT = 750;
-
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Jumperino");
 
     // Define the camera to look into our 3d world
