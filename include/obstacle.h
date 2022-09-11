@@ -9,10 +9,18 @@ class Obstacle
 public:
     Obstacle();
 
-    // Set obstacle position
+    /**
+     * Set obstacle position.
+     *
+     * @param newPosition New position of obstacle.
+     */
     void setObstaclePosition(Vector3 newPosition) { position = newPosition; }
 
-    // Get obstacle position
+    /**
+     * Get obstacle position.
+     *
+     * @return obstacle position.
+     */
     Vector3 getObstaclePosition() { return position; }
 
     // Move obstacle towards viewer
