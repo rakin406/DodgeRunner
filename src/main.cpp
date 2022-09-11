@@ -1,3 +1,4 @@
+#include "../include/obstacle.h"
 #include "../include/player.h"
 #include "raylib.h"
 
@@ -19,7 +20,12 @@ int main()
     camera.fovy = 45.0F;         // Camera field-of-view Y
     camera.projection = CAMERA_PERSPECTIVE; // Camera mode type
 
+    // Initialize cube as player
     Player player;
+
+    // Initialize obstacle
+    // TODO: Create a vector of obstacles
+    Obstacle obstacle;
 
     SetTargetFPS(60);
 
@@ -27,8 +33,7 @@ int main()
     while (!WindowShouldClose())
     {
         // Update
-        player.moveForward();
-        // TODO: Make camera follow player from behind
+        obstacle.moveTowardsViewer();
 
         // Draw
         BeginDrawing();
@@ -41,8 +46,11 @@ int main()
         DrawPlane((Vector3){0.0F, -2.0F, 0.0F}, (Vector2){8.0F, 32.0F},
                   LIGHTGRAY);
 
-        // Draw cube
+        // Draw player cube
         player.draw();
+
+        // Draw obstacle
+        obstacle.draw();
 
         EndMode3D();
 
