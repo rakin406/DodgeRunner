@@ -24,12 +24,22 @@ public:
     Vector3 getPosition() const { return position; }
 
     /**
-     * Move obstacle towards viewer and reset position to starting point when
-     * obstacle reaches screen height.
+     * Set obstacle movement speed.
      *
-     * @param speed Movement speed of obstacle.
+     * @param newSpeed New speed of obstacle.
      */
-    void loopTowardsViewer(float speed);
+    void setSpeed(float newSpeed) { speed = newSpeed; }
+
+    /**
+     * Get obstacle movement speed.
+     *
+     * @return obstacle movement speed.
+     */
+    float getSpeed() const { return speed; }
+
+    // Move obstacle towards viewer and reset position to starting point when
+    // obstacle reaches screen height.
+    void loopTowardsViewer();
 
     // Reset obstacle position to starting point
     void resetPosition();
@@ -38,8 +48,8 @@ public:
     void draw() const;
 
 private:
-    // Obstacle position
-    Vector3 position;
+    Vector3 position; // Obstacle position
+    float speed;      // Obstacle movement speed
 };
 
 #endif

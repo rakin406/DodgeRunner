@@ -2,12 +2,18 @@
 #include "../include/constants.h"
 #include "raylib.h"
 
-Obstacle::Obstacle() { this->resetPosition(); }
+#define DEFAULT_SPEED 1.0F
 
-void Obstacle::loopTowardsViewer(float speed)
+Obstacle::Obstacle()
+{
+    this->resetPosition();
+    this->setSpeed(DEFAULT_SPEED);
+}
+
+void Obstacle::loopTowardsViewer()
 {
     Vector3 newPosition = this->getPosition();
-    newPosition.z += speed;
+    newPosition.z += this->getSpeed();
     this->setPosition(newPosition);
 
     // TODO: Refactor this code to ACTUALLY reach screen height and NOT count on

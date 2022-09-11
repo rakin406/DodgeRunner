@@ -25,6 +25,9 @@ int main()
     // TODO: Create a vector of obstacles
     Obstacle obstacle;
 
+    // TODO: Increment score with a bit of delay
+    int score = 0;
+
     SetTargetFPS(60);
 
     // Main game loop
@@ -41,7 +44,7 @@ int main()
         }
 
         // Update
-        obstacle.loopTowardsViewer(1.0F);
+        obstacle.loopTowardsViewer();
 
         // Draw
         BeginDrawing();
