@@ -41,8 +41,7 @@ int main()
         BeginMode3D(camera);
 
         // Draw ground
-        DrawPlane((Vector3){0.0F, -CUBE_SIZE, 0.0F}, (Vector2){8.0F, 32.0F},
-                  LIGHTGRAY);
+        DrawPlane((Vector3){0.0F, -CUBE_SIZE, 0.0F}, GROUND_SIZE, LIGHTGRAY);
 
         // Draw player cube
         player.draw();
