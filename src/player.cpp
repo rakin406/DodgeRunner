@@ -1,4 +1,5 @@
 #include "../include/player.h"
+#include "../include/constants.h"
 #include "raylib.h"
 
 Player::Player()
@@ -16,6 +17,7 @@ void Player::moveForward()
 
 void Player::draw()
 {
-    DrawCube(this->getPlayerPosition(), 2.0F, 2.0F, 2.0F, BLUE);
-    DrawCubeWires(this->getPlayerPosition(), 2.0F, 2.0F, 2.0F, BLACK);
+    DrawCube(this->getPlayerPosition(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, BLUE);
+    DrawCubeWires(this->getPlayerPosition(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE,
+                  BLACK);
 }
