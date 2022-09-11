@@ -4,14 +4,14 @@
 
 Obstacle::Obstacle()
 {
-    Vector3 startingPosition = {0.0F, 0.0F, 0.0F};
+    Vector3 startingPosition = {0.0F, 0.0F, (float)-SCREEN.height};
     this->setObstaclePosition(startingPosition);
 }
 
-void Obstacle::moveTowardsViewer()
+void Obstacle::moveTowardsViewer(float speed)
 {
     Vector3 newPosition = this->getObstaclePosition();
-    newPosition.z += 0.1F;
+    newPosition.z += speed;
     this->setObstaclePosition(newPosition);
 }
 

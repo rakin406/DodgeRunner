@@ -23,8 +23,12 @@ public:
      */
     Vector3 getObstaclePosition() { return position; }
 
-    // Move obstacle towards viewer
-    void moveTowardsViewer();
+    /**
+     * Move obstacle towards viewer.
+     *
+     * @param speed Movement speed of obstacle.
+     */
+    void moveTowardsViewer(float speed);
 
     // Draw obstacle on screen
     void draw();
