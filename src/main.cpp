@@ -33,11 +33,11 @@ int main()
         // Player movement
         if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A))
         {
-            player.moveLeft();
+            player.move(Direction::Left);
         }
         else if (IsKeyPressed(KEY_RIGHT) || IsKeyPressed(KEY_D))
         {
-            player.moveRight();
+            player.move(Direction::Right);
         }
 
         // Update

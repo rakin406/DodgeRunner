@@ -8,17 +8,20 @@ Player::Player()
     this->setPosition(startingPosition);
 }
 
-void Player::moveLeft()
+void Player::move(Direction direction)
 {
     Vector3 newPosition = this->getPosition();
-    newPosition.x -= CUBE_SIZE;
-    this->setPosition(newPosition);
-}
 
-void Player::moveRight()
-{
-    Vector3 newPosition = this->getPosition();
-    newPosition.x += CUBE_SIZE;
+    // Move according to direction
+    if (direction == Direction::Left)
+    {
+        newPosition.x -= CUBE_SIZE;
+    }
+    else
+    {
+        newPosition.x += CUBE_SIZE;
+    }
+
     this->setPosition(newPosition);
 }
 

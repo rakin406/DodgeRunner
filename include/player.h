@@ -3,6 +3,13 @@
 
 #include "raylib.h"
 
+// All possible directions for player cube
+enum Direction
+{
+    Left,
+    Right
+};
+
 // This class contains all the functions of the player cube
 class Player
 {
@@ -23,11 +30,12 @@ public:
      */
     Vector3 getPosition() { return position; }
 
-    // Move player cube to left
-    void moveLeft();
-
-    // Move player cube to right
-    void moveRight();
+    /**
+     * Move player cube to specified direction.
+     *
+     * @param direction Desired direction for player cube.
+     */
+    void move(Direction direction);
 
     // Draw player cube on screen
     void draw();
