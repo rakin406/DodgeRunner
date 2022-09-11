@@ -28,7 +28,21 @@ public:
      *
      * @return player cube position.
      */
-    Vector3 getPosition() { return position; }
+    Vector3 getPosition() const { return position; }
+
+    /**
+     * Set current row of player cube.
+     *
+     * @param row New row of player cube.
+     */
+    void setCurrentRow(int row) { currentRow = row; }
+
+    /**
+     * Get current row of player cube.
+     *
+     * @return current row.
+     */
+    int getCurrentRow() const { return currentRow; }
 
     /**
      * Move player cube to specified direction.
@@ -38,11 +52,11 @@ public:
     void move(Direction direction);
 
     // Draw player cube on screen
-    void draw();
+    void draw() const;
 
 private:
-    // Player cube position
-    Vector3 position;
+    Vector3 position; // Player cube position
+    int currentRow;   // Current ground row of player cube
 };
 
 #endif
