@@ -1,4 +1,5 @@
 #include "../include/obstacle.h"
+#include "../include/constants.h"
 #include "raylib.h"
 
 Obstacle::Obstacle()
@@ -16,6 +17,7 @@ void Obstacle::moveTowardsViewer()
 
 void Obstacle::draw()
 {
-    DrawCube(this->getObstaclePosition(), 2.0F, 2.0F, 2.0F, RED);
-    DrawCubeWires(this->getObstaclePosition(), 2.0F, 2.0F, 2.0F, BLACK);
+    DrawCube(this->getObstaclePosition(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, RED);
+    DrawCubeWires(this->getObstaclePosition(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE,
+                  BLACK);
 }
