@@ -34,8 +34,8 @@ if (NOT raylib_FOUND) # If there's none, fetch and build raylib
     endif()
 endif()
 
-set(HEADER_FILES include/player.h)
-add_executable(${PROJECT_NAME} src/main.cpp src/player.cpp ${HEADER_FILES})
+set(HEADER_FILES include/player.h include/obstacle.h)
+add_executable(${PROJECT_NAME} src/main.cpp src/player.cpp src/obstacle.cpp ${HEADER_FILES})
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 target_link_libraries(${PROJECT_NAME} raylib)
 
