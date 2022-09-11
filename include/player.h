@@ -4,7 +4,7 @@
 #include "raylib.h"
 
 // All possible directions for player cube
-enum Direction
+enum class Direction
 {
     Left,
     Right
