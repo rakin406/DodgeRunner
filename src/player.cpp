@@ -2,24 +2,41 @@
 #include "../include/constants.h"
 #include "raylib.h"
 
+#define LEFT_ROW 1
+#define MIDDLE_ROW 2
+#define RIGHT_ROW 3
+
 Player::Player()
 {
     Vector3 startingPosition = {0.0F, 0.0F, 0.0F};
     this->setPosition(startingPosition);
+    this->setCurrentRow(MIDDLE_ROW);
 }
 
 void Player::move(Direction direction)
 {
     Vector3 newPosition = this->getPosition();
 
-    // Move according to direction
+    // Check direction
     if (direction == Direction::Left)
     {
-        newPosition.x -= CUBE_SIZE;
+        // Don't go beyond row boundary
+        if (this->getCurrentRow() > LEFT_ROW)
+        {
+            newPosition.x -= CUBE_SIZE;
+            int currentRow = this->getCurrentRow();
+            this->setCurrentRow(currentRow - 1);
+        }
     }
     else
     {
-        newPosition.x += CUBE_SIZE;
+        // Don't go beyond row boundary
+        if (this->getCurrentRow() < RIGHT_ROW)
+        {
+            newPosition.x += CUBE_SIZE;
+            int currentRow = this->getCurrentRow();
+            this->setCurrentRow(currentRow + 1);
+        }
     }
 
     this->setPosition(newPosition);
