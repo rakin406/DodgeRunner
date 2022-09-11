@@ -21,7 +21,7 @@ public:
      *
      * @return obstacle position.
      */
-    Vector3 getPosition() { return position; }
+    Vector3 getPosition() const { return position; }
 
     /**
      * Move obstacle towards viewer and reset position to starting point when
@@ -35,7 +35,7 @@ public:
     void resetPosition();
 
     // Draw obstacle on screen
-    void draw();
+    void draw() const;
 
 private:
     // Obstacle position

@@ -25,7 +25,7 @@ void Obstacle::resetPosition()
     this->setPosition(startingPosition);
 }
 
-void Obstacle::draw()
+void Obstacle::draw() const
 {
     DrawCube(this->getPosition(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, RED);
     DrawCubeWires(this->getPosition(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, BLACK);

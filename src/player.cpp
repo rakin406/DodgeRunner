@@ -25,7 +25,7 @@ void Player::move(Direction direction)
     this->setPosition(newPosition);
 }
 
-void Player::draw()
+void Player::draw() const
 {
     DrawCube(this->getPosition(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, BLUE);
     DrawCubeWires(this->getPosition(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, BLACK);
