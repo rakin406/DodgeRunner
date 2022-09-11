@@ -5,16 +5,16 @@
 
 const float CUBE_SIZE = 2.0F;
 
-const struct
+namespace SCREEN
 {
-    int width = 1000;
-    int height = 750;
-} __attribute__((aligned(8))) SCREEN;
+const int width = 1000;
+const int height = 750;
+} // namespace SCREEN
 
-const struct
+namespace GROUND
 {
-    int rows = (int)CUBE_SIZE * 3;
-    Vector2 size = {(float)rows, (float)SCREEN.height};
-} __attribute__((aligned(16))) GROUND;
+const int rows = (int)CUBE_SIZE * 3;
+const Vector2 size = {(float)rows, (float)SCREEN::height};
+} // namespace GROUND
 
 #endif

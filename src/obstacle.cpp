@@ -21,7 +21,7 @@ void Obstacle::loopTowardsViewer(float speed)
 
 void Obstacle::resetPosition()
 {
-    Vector3 startingPosition = {0.0F, 0.0F, (float)-SCREEN.height};
+    Vector3 startingPosition = {0.0F, 0.0F, (float)-SCREEN::height};
     this->setPosition(startingPosition);
 }
 

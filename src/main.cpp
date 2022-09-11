@@ -7,7 +7,7 @@
 int main()
 {
     // Initialization
-    InitWindow(SCREEN.width, SCREEN.height, "Jumperino");
+    InitWindow(SCREEN::width, SCREEN::height, "Jumperino");
 
     // Define the camera to look into our 3d world
     Camera3D camera = {0};
@@ -41,7 +41,7 @@ int main()
         BeginMode3D(camera);
 
         // Draw ground
-        DrawPlane((Vector3){0.0F, -CUBE_SIZE, 0.0F}, GROUND.size, LIGHTGRAY);
+        DrawPlane((Vector3){0.0F, -CUBE_SIZE, 0.0F}, GROUND::size, LIGHTGRAY);
 
         // Draw player cube
         player.draw();
