@@ -5,19 +5,18 @@
 Obstacle::Obstacle()
 {
     Vector3 startingPosition = {0.0F, 0.0F, (float)-SCREEN.height};
-    this->setObstaclePosition(startingPosition);
+    this->setPosition(startingPosition);
 }
 
 void Obstacle::moveTowardsViewer(float speed)
 {
-    Vector3 newPosition = this->getObstaclePosition();
+    Vector3 newPosition = this->getPosition();
     newPosition.z += speed;
-    this->setObstaclePosition(newPosition);
+    this->setPosition(newPosition);
 }
 
 void Obstacle::draw()
 {
-    DrawCube(this->getObstaclePosition(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, RED);
-    DrawCubeWires(this->getObstaclePosition(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE,
-                  BLACK);
+    DrawCube(this->getPosition(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, RED);
+    DrawCubeWires(this->getPosition(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, BLACK);
 }

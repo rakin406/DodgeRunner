@@ -5,19 +5,18 @@
 Player::Player()
 {
     Vector3 startingPosition = {0.0F, 0.0F, 0.0F};
-    this->setPlayerPosition(startingPosition);
+    this->setPosition(startingPosition);
 }
 
 void Player::moveForward()
 {
-    Vector3 newPosition = this->getPlayerPosition();
+    Vector3 newPosition = this->getPosition();
     newPosition.z -= 0.1;
-    this->setPlayerPosition(newPosition);
+    this->setPosition(newPosition);
 }
 
 void Player::draw()
 {
-    DrawCube(this->getPlayerPosition(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, BLUE);
-    DrawCubeWires(this->getPlayerPosition(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE,
-                  BLACK);
+    DrawCube(this->getPosition(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, BLUE);
+    DrawCubeWires(this->getPosition(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, BLACK);
 }

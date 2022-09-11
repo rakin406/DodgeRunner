@@ -14,14 +14,14 @@ public:
      *
      * @param newPosition New position of obstacle.
      */
-    void setObstaclePosition(Vector3 newPosition) { position = newPosition; }
+    void setPosition(Vector3 newPosition) { position = newPosition; }
 
     /**
      * Get obstacle position.
      *
      * @return obstacle position.
      */
-    Vector3 getObstaclePosition() { return position; }
+    Vector3 getPosition() { return position; }
 
     /**
      * Move obstacle towards viewer.
