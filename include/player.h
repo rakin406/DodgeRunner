@@ -23,8 +23,11 @@ public:
      */
     Vector3 getPosition() { return position; }
 
-    // TODO: Remove this function and change it to moveLeft() and moveRight()
-    void moveForward();
+    // Move player cube to left
+    void moveLeft();
+
+    // Move player cube to right
+    void moveRight();
 
     // Draw player cube on screen
     void draw();

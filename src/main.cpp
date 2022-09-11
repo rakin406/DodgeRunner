@@ -30,6 +30,16 @@ int main()
     // Main game loop
     while (!WindowShouldClose())
     {
+        // Player movement
+        if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A))
+        {
+            player.moveLeft();
+        }
+        else if (IsKeyPressed(KEY_RIGHT) || IsKeyPressed(KEY_D))
+        {
+            player.moveRight();
+        }
+
         // Update
         obstacle.loopTowardsViewer(1.0F);
 

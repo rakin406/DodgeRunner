@@ -8,10 +8,17 @@ Player::Player()
     this->setPosition(startingPosition);
 }
 
-void Player::moveForward()
+void Player::moveLeft()
 {
     Vector3 newPosition = this->getPosition();
-    newPosition.z -= 0.1;
+    newPosition.x -= CUBE_SIZE;
+    this->setPosition(newPosition);
+}
+
+void Player::moveRight()
+{
+    Vector3 newPosition = this->getPosition();
+    newPosition.x += CUBE_SIZE;
     this->setPosition(newPosition);
 }
 
