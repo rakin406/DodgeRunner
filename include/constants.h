@@ -3,9 +3,18 @@
 
 #include "raylib.h"
 
-const int SCREEN_WIDTH = 1000;
-const int SCREEN_HEIGHT = 750;
-const Vector2 GROUND_SIZE = {8.0F, 32.0F};
 const float CUBE_SIZE = 2.0F;
+
+const struct
+{
+    int width = 1000;
+    int height = 750;
+} __attribute__((aligned(8))) SCREEN;
+
+const struct
+{
+    int rows = (int)CUBE_SIZE * 3;
+    Vector2 size = {(float)rows, (float)SCREEN.height};
+} __attribute__((aligned(16))) GROUND;
 
 #endif
