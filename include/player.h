@@ -3,6 +3,7 @@
 
 #include "raylib.h"
 
+// This class contains all the functions of the player cube
 class Player
 {
 public:
@@ -14,10 +15,14 @@ public:
     // Get player position
     Vector3 getPlayerPosition() { return position; }
 
+    // TODO: Remove this function and change it to moveLeft() and moveRight()
     void moveForward();
+
+    // Draw player cube on screen
     void draw();
 
 private:
+    // Player cube position
     Vector3 position;
 };
 
