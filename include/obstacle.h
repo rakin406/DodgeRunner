@@ -3,6 +3,7 @@
 
 #include "raylib.h"
 
+// This class contains all the functions of a single obstacle
 class Obstacle
 {
 public:
@@ -14,10 +15,14 @@ public:
     // Get obstacle position
     Vector3 getObstaclePosition() { return position; }
 
+    // Move obstacle towards viewer
     void moveTowardsViewer();
+
+    // Draw obstacle on screen
     void draw();
 
 private:
+    // Obstacle position
     Vector3 position;
 };
 
