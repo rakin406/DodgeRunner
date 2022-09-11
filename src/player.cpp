@@ -24,6 +24,8 @@ void Player::move(Direction direction)
         if (this->getCurrentRow() > LEFT_ROW)
         {
             newPosition.x -= CUBE_SIZE;
+
+            // Shift row to left
             int currentRow = this->getCurrentRow();
             this->setCurrentRow(currentRow - 1);
         }
@@ -34,6 +36,8 @@ void Player::move(Direction direction)
         if (this->getCurrentRow() < RIGHT_ROW)
         {
             newPosition.x += CUBE_SIZE;
+
+            // Shift row to right
             int currentRow = this->getCurrentRow();
             this->setCurrentRow(currentRow + 1);
         }
