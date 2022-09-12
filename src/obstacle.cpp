@@ -1,12 +1,6 @@
 #include "../include/obstacle.h"
-#include "../include/constants.h"
-#include "raylib.h"
 
-Obstacle::Obstacle()
-{
-    this->resetPosition();
-    this->setSpeed(DEFAULT_OBSTACLE_SPEED);
-}
+Obstacle::Obstacle() { this->resetPosition(); }
 
 void Obstacle::loopTowardsViewer()
 {
@@ -25,9 +19,9 @@ void Obstacle::loopTowardsViewer()
 
 void Obstacle::resetPosition()
 {
-    float randomRow =
-        ROW_POSITIONS[GetRandomValue(0, ROW_POSITIONS.size() - 1)];
-    auto randomColumn = (float)GetRandomValue(-300, -200);
+    int randomRowIndex = GetRandomValue(0, ROW_POSITIONS.size() - 1);
+    float randomRow = ROW_POSITIONS[randomRowIndex];
+    auto randomColumn = (float)GetRandomValue(MIN_START_POS, MAX_START_POS);
     Vector3 startingPosition = {randomRow, 0.0F, randomColumn};
     this->setPosition(startingPosition);
 }

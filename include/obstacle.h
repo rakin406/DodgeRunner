@@ -1,7 +1,11 @@
 #ifndef OBSTACLE_H
 #define OBSTACLE_H
 
+#include "./constants.h"
 #include "raylib.h"
+
+const int MIN_START_POS = -300;
+const int MAX_START_POS = -200;
 
 // This class contains all the functions of a single obstacle
 class Obstacle
@@ -48,8 +52,8 @@ public:
     void draw() const;
 
 private:
-    Vector3 position; // Obstacle position
-    float speed;      // Obstacle movement speed
+    Vector3 position = {};                // Obstacle position
+    float speed = DEFAULT_OBSTACLE_SPEED; // Obstacle movement speed
 };
 
 #endif

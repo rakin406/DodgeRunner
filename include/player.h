@@ -1,11 +1,12 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "./constants.h"
 #include "raylib.h"
 
-#define LEFT_ROW 1
-#define MIDDLE_ROW 2
-#define RIGHT_ROW 3
+const int LEFT_ROW = 1;
+const int MIDDLE_ROW = 2;
+const int RIGHT_ROW = 3;
 
 // All possible directions for player cube
 enum class Direction

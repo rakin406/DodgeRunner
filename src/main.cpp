@@ -6,8 +6,8 @@
 #include <iostream>
 #include <vector>
 
-#define SEED 0xaabbccff
-#define FPS 60
+const unsigned int SEED = 0xaabbccff;
+const int FPS = 60;
 
 /**
  * Return true if player cube collides with any obstacles.
