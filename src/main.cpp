@@ -25,11 +25,11 @@ int main()
 
     // Define the camera to look into our 3d world
     Camera3D camera = {0};
-    camera.position = (Vector3){0.0F, 5.0F, 10.0F}; // Camera position
-    camera.target = (Vector3){0.0F, 1.0F, 0.0F};    // Camera looking at point
+    camera.position = camera::POSITION;
+    camera.target = (Vector3){0.0F, 1.0F, 0.0F}; // Camera looking at point
     camera.up = (Vector3){0.0F, 1.0F,
                           0.0F}; // Camera up vector (rotation towards target)
-    camera.fovy = 45.0F;         // Camera field-of-view Y
+    camera.fovy = camera::FOV;   // Camera field-of-view Y
     camera.projection = CAMERA_PERSPECTIVE; // Camera mode type
 
     // Initialize cube as player

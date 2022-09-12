@@ -15,6 +15,12 @@ const int WIDTH = 1000;
 const int HEIGHT = 750;
 } // namespace screen
 
+namespace camera
+{
+const Vector3 POSITION = {0.0F, 5.0F, 10.0F};
+const float FOV = 45.0F;
+} // namespace camera
+
 namespace ground
 {
 const float WIDTH = CUBE_SIZE * 3.5F;
