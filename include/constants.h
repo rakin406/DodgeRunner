@@ -17,8 +17,8 @@ const int height = 750;
 
 namespace GROUND
 {
-const int rows = (int)CUBE_SIZE * 3;
-const Vector2 size = {(float)rows, (float)SCREEN::height};
+const float width = CUBE_SIZE * 3.5F;
+const Vector2 size = {width, (float)SCREEN::height};
 } // namespace GROUND
 
 #endif

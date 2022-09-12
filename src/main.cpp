@@ -57,6 +57,12 @@ int main()
     {
         ////////////// Update //////////////
 
+        // Stop game if player and obstacle collides
+        if (checkCollision(player, obstacles))
+        {
+            collision = true;
+        }
+
         // Ensure no collision
         if (!collision)
         {
@@ -88,12 +94,6 @@ int main()
             }
 
             ++score;
-        }
-
-        // Stop game if player and obstacle collides
-        if (checkCollision(player, obstacles))
-        {
-            collision = true;
         }
 
         ////////////// Draw ///////////////
