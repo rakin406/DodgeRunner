@@ -12,7 +12,7 @@
  * Return true if player cube collides with any obstacles.
  *
  * @param player Player cube.
- * @param obstacles All the obstacles.
+ * @param obstacles Obstacles.
  * @return boolean.
  */
 bool checkCollision(Player player, const std::vector<Obstacle> &obstacles);
@@ -44,6 +44,7 @@ int main()
     }
 
     int score = 0;
+    bool collision = false;
 
     // Set a custom random seed for random number generation.
     // Needed for random obstacle position.
@@ -56,37 +57,43 @@ int main()
     {
         ////////////// Update //////////////
 
-        // Player movement
-        if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A))
+        // Ensure no collision
+        if (!collision)
         {
-            player.move(Direction::Left);
-        }
-        else if (IsKeyPressed(KEY_RIGHT) || IsKeyPressed(KEY_D))
-        {
-            player.move(Direction::Right);
-        }
-
-        // Move obstacles towards viewer
-        for (auto &elem : obstacles)
-        {
-            elem.loopTowardsViewer();
+            // Player movement
+            if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A))
+            {
+                player.move(Direction::Left);
+            }
+            else if (IsKeyPressed(KEY_RIGHT) || IsKeyPressed(KEY_D))
+            {
+                player.move(Direction::Right);
+            }
         }
 
-        // Check collision
+        // Ensure no collision
+        if (!collision)
+        {
+            // Updating obstacles
+            for (auto &elem : obstacles)
+            {
+                // Move obstacles towards viewer
+                elem.loopTowardsViewer();
+
+                // Increase speed of obstacles according to score
+                if (score % 5000 == 0)
+                {
+                    elem.setSpeed(elem.getSpeed() + 0.5F);
+                }
+            }
+
+            ++score;
+        }
+
+        // Stop game if player and obstacle collides
         if (checkCollision(player, obstacles))
         {
-            // Debugging
-            std::cout << "Touched\n";
-        }
-
-        ++score;
-        // Increase speed of obstacles according to score
-        for (auto &elem : obstacles)
-        {
-            if (score % 5000 == 0)
-            {
-                elem.setSpeed(elem.getSpeed() + 0.5F);
-            }
+            collision = true;
         }
 
         ////////////// Draw ///////////////
@@ -129,22 +136,21 @@ bool checkCollision(Player player, const std::vector<Obstacle> &obstacles)
     for (const auto &elem : obstacles)
     {
         Vector3 obstaclePosition = elem.getPosition();
-        if (CheckCollisionBoxes(
-                (BoundingBox){(Vector3){playerPosition.x - CUBE_SIZE / 2,
-                                        playerPosition.y - CUBE_SIZE / 2,
-                                        playerPosition.z - CUBE_SIZE / 2},
-                              (Vector3){playerPosition.x + CUBE_SIZE / 2,
-                                        playerPosition.y + CUBE_SIZE / 2,
-                                        playerPosition.z + CUBE_SIZE / 2}},
-                (BoundingBox){(Vector3){obstaclePosition.x - CUBE_SIZE / 2,
-                                        obstaclePosition.y - CUBE_SIZE / 2,
-                                        obstaclePosition.z - CUBE_SIZE / 2},
-                              (Vector3){obstaclePosition.x + CUBE_SIZE / 2,
-                                        obstaclePosition.y + CUBE_SIZE / 2,
-                                        obstaclePosition.z + CUBE_SIZE / 2}}))
-        {
-            return true;
-        }
+        // FIX: Collision only returns true if player touches the left and right
+        // sides of the obstacle, not the front side.
+        return CheckCollisionBoxes(
+            (BoundingBox){(Vector3){playerPosition.x - CUBE_SIZE / 2,
+                                    playerPosition.y - CUBE_SIZE / 2,
+                                    playerPosition.z - CUBE_SIZE / 2},
+                          (Vector3){playerPosition.x + CUBE_SIZE / 2,
+                                    playerPosition.y + CUBE_SIZE / 2,
+                                    playerPosition.z + CUBE_SIZE / 2}},
+            (BoundingBox){(Vector3){obstaclePosition.x - CUBE_SIZE / 2,
+                                    obstaclePosition.y - CUBE_SIZE / 2,
+                                    obstaclePosition.z - CUBE_SIZE / 2},
+                          (Vector3){obstaclePosition.x + CUBE_SIZE / 2,
+                                    obstaclePosition.y + CUBE_SIZE / 2,
+                                    obstaclePosition.z + CUBE_SIZE / 2}});
     }
     return false;
 }
