@@ -1,4 +1,5 @@
 #include "../include/player.h"
+#include "../include/constants.h"
 
 void Player::move(Direction direction)
 {

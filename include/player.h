@@ -1,7 +1,6 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "./constants.h"
 #include "raylib.h"
 
 const int LEFT_ROW = 1;
