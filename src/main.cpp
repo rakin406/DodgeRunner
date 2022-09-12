@@ -6,7 +6,8 @@
 #include <iostream>
 #include <vector>
 
-#define DEFAULT_OBSTACLES 10
+#define SEED 0xaabbccff
+#define FPS 60
 
 /**
  * Return true if player cube collides with any obstacles.
@@ -48,9 +49,9 @@ int main()
 
     // Set a custom random seed for random number generation.
     // Needed for random obstacle position.
-    SetRandomSeed(0xaabbccff);
+    SetRandomSeed(SEED);
 
-    SetTargetFPS(60);
+    SetTargetFPS(FPS);
 
     // Main game loop
     while (!WindowShouldClose())
@@ -87,9 +88,9 @@ int main()
                 elem.loopTowardsViewer();
 
                 // Increase speed of obstacles according to score
-                if (score % 5000 == 0)
+                if (score % SCORE_INCREMENT == 0)
                 {
-                    elem.setSpeed(elem.getSpeed() + 0.5F);
+                    elem.setSpeed(elem.getSpeed() + SPEED_INCREMENT);
                 }
             }
 
@@ -103,7 +104,8 @@ int main()
         ClearBackground(RAYWHITE);
 
         // View score
-        DrawText(fmt::format("Score: {}", score).c_str(), 15, 15, 30, BLACK);
+        DrawText(fmt::format("Score: {}", score).c_str(), 15, 15, FONT_SIZE,
+                 BLACK);
 
         BeginMode3D(camera);
 

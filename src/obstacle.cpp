@@ -2,12 +2,10 @@
 #include "../include/constants.h"
 #include "raylib.h"
 
-#define DEFAULT_SPEED 1.0F
-
 Obstacle::Obstacle()
 {
     this->resetPosition();
-    this->setSpeed(DEFAULT_SPEED);
+    this->setSpeed(DEFAULT_OBSTACLE_SPEED);
 }
 
 void Obstacle::loopTowardsViewer()
