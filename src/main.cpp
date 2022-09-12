@@ -2,6 +2,7 @@
 #include "../include/obstacle.h"
 #include "../include/player.h"
 #include "raylib.h"
+#include <fmt/core.h>
 
 // Program main entry point
 int main()
@@ -33,6 +34,8 @@ int main()
     // Main game loop
     while (!WindowShouldClose())
     {
+        ////////////// Update //////////////
+
         // Player movement
         if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A))
         {
@@ -43,13 +46,29 @@ int main()
             player.move(Direction::Right);
         }
 
-        // Update
         obstacle.loopTowardsViewer();
 
-        // Draw
+        ++score;
+        switch (score)
+        {
+        case 5000:
+            obstacle.setSpeed(1.5F);
+            break;
+        case 10000:
+            obstacle.setSpeed(2.0F);
+            break;
+        default:
+            break;
+        }
+
+        ////////////// Draw ///////////////
+
         BeginDrawing();
 
         ClearBackground(RAYWHITE);
+
+        // View score
+        DrawText(fmt::format("Score: {}", score).c_str(), 15, 15, 30, BLACK);
 
         BeginMode3D(camera);
 
