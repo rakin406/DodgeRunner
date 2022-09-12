@@ -9,16 +9,16 @@ const float CUBE_SIZE = 2.0F;
 // The middle row position is 0.0F
 const std::array<float, 3> ROW_POSITIONS = {-CUBE_SIZE, 0.0F, CUBE_SIZE};
 
-namespace SCREEN
+namespace screen
 {
-const int width = 1000;
-const int height = 750;
-} // namespace SCREEN
+const int WIDTH = 1000;
+const int HEIGHT = 750;
+} // namespace screen
 
-namespace GROUND
+namespace ground
 {
-const float width = CUBE_SIZE * 3.5F;
-const Vector2 size = {width, (float)SCREEN::height};
-} // namespace GROUND
+const float WIDTH = CUBE_SIZE * 3.5F;
+const Vector2 SIZE = {WIDTH, (float)screen::HEIGHT};
+} // namespace ground
 
 #endif

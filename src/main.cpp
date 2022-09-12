@@ -21,7 +21,7 @@ bool checkCollision(Player player, const std::vector<Obstacle> &obstacles);
 int main()
 {
     // Initialization
-    InitWindow(SCREEN::width, SCREEN::height, "Dodge Runner");
+    InitWindow(screen::WIDTH, screen::HEIGHT, "Dodge Runner");
 
     // Define the camera to look into our 3d world
     Camera3D camera = {0};
@@ -108,7 +108,7 @@ int main()
         BeginMode3D(camera);
 
         // Draw ground
-        DrawPlane((Vector3){0.0F, -CUBE_SIZE, 0.0F}, GROUND::size, LIGHTGRAY);
+        DrawPlane((Vector3){0.0F, -CUBE_SIZE, 0.0F}, ground::SIZE, LIGHTGRAY);
 
         // Draw player cube
         player.draw();
