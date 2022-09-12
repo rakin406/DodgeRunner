@@ -33,8 +33,11 @@ int main()
         obstacles.push_back(obs);
     }
 
-    // TODO: Increment score with a bit of delay
     int score = 0;
+
+    // Set a custom random seed for random number generation.
+    // Needed for random obstacle position.
+    SetRandomSeed(0xaabbccff);
 
     SetTargetFPS(60);
 
