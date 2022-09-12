@@ -3,9 +3,19 @@
 #include "../include/player.h"
 #include "raylib.h"
 #include <fmt/core.h>
+#include <iostream>
 #include <vector>
 
 #define DEFAULT_OBSTACLES 10
+
+/**
+ * Return true if player cube collides with any obstacles.
+ *
+ * @param player Player cube.
+ * @param obstacles All the obstacles.
+ * @return boolean.
+ */
+bool checkCollision(Player player, const std::vector<Obstacle> &obstacles);
 
 // Program main entry point
 int main()
@@ -62,6 +72,13 @@ int main()
             elem.loopTowardsViewer();
         }
 
+        // Check collision
+        if (checkCollision(player, obstacles))
+        {
+            // Debugging
+            std::cout << "Touched\n";
+        }
+
         ++score;
         // Increase speed of obstacles according to score
         for (auto &elem : obstacles)
@@ -104,4 +121,30 @@ int main()
     CloseWindow();
 
     return 0;
+}
+
+bool checkCollision(Player player, const std::vector<Obstacle> &obstacles)
+{
+    Vector3 playerPosition = player.getPosition();
+    for (const auto &elem : obstacles)
+    {
+        Vector3 obstaclePosition = elem.getPosition();
+        if (CheckCollisionBoxes(
+                (BoundingBox){(Vector3){playerPosition.x - CUBE_SIZE / 2,
+                                        playerPosition.y - CUBE_SIZE / 2,
+                                        playerPosition.z - CUBE_SIZE / 2},
+                              (Vector3){playerPosition.x + CUBE_SIZE / 2,
+                                        playerPosition.y + CUBE_SIZE / 2,
+                                        playerPosition.z + CUBE_SIZE / 2}},
+                (BoundingBox){(Vector3){obstaclePosition.x - CUBE_SIZE / 2,
+                                        obstaclePosition.y - CUBE_SIZE / 2,
+                                        obstaclePosition.z - CUBE_SIZE / 2},
+                              (Vector3){obstaclePosition.x + CUBE_SIZE / 2,
+                                        obstaclePosition.y + CUBE_SIZE / 2,
+                                        obstaclePosition.z + CUBE_SIZE / 2}}))
+        {
+            return true;
+        }
+    }
+    return false;
 }
