@@ -1,2 +1,2 @@
-# jumperino
-A run and jump game
+# Dodge Runner
+A running and dodging game
