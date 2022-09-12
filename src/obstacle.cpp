@@ -29,6 +29,7 @@ void Obstacle::resetPosition()
 {
     float randomRow =
         ROW_POSITIONS[GetRandomValue(0, ROW_POSITIONS.size() - 1)];
+    // TODO: Generate random z position
     Vector3 startingPosition = {randomRow, 0.0F, (float)-SCREEN::height};
     this->setPosition(startingPosition);
 }
