@@ -2,17 +2,6 @@
 #include "../include/constants.h"
 #include "raylib.h"
 
-#define LEFT_ROW 1
-#define MIDDLE_ROW 2
-#define RIGHT_ROW 3
-
-Player::Player()
-{
-    Vector3 startingPosition = {0.0F, 0.0F, 0.0F};
-    this->setPosition(startingPosition);
-    this->setCurrentRow(MIDDLE_ROW);
-}
-
 void Player::move(Direction direction)
 {
     Vector3 newPosition = this->getPosition();

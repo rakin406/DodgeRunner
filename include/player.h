@@ -3,6 +3,10 @@
 
 #include "raylib.h"
 
+#define LEFT_ROW 1
+#define MIDDLE_ROW 2
+#define RIGHT_ROW 3
+
 // All possible directions for player cube
 enum class Direction
 {
@@ -14,8 +18,6 @@ enum class Direction
 class Player
 {
 public:
-    Player();
-
     /**
      * Set player position.
      *
@@ -28,7 +30,7 @@ public:
      *
      * @return player cube position.
      */
-    Vector3 getPosition() const { return position; }
+    [[nodiscard]] Vector3 getPosition() const { return position; }
 
     /**
      * Set current row of player cube.
@@ -42,7 +44,7 @@ public:
      *
      * @return current row.
      */
-    int getCurrentRow() const { return currentRow; }
+    [[nodiscard]] int getCurrentRow() const { return currentRow; }
 
     /**
      * Move player cube to specified direction.
@@ -55,8 +57,8 @@ public:
     void draw() const;
 
 private:
-    Vector3 position; // Player cube position
-    int currentRow;   // Current ground row of player cube
+    Vector3 position = {0.0F, 0.0F, 0.0F}; // Player cube position
+    int currentRow = MIDDLE_ROW;           // Current ground row of player cube
 };
 
 #endif

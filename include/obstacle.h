@@ -21,7 +21,7 @@ public:
      *
      * @return obstacle position.
      */
-    Vector3 getPosition() const { return position; }
+    [[nodiscard]] Vector3 getPosition() const { return position; }
 
     /**
      * Set obstacle movement speed.
@@ -35,7 +35,7 @@ public:
      *
      * @return obstacle movement speed.
      */
-    float getSpeed() const { return speed; }
+    [[nodiscard]] float getSpeed() const { return speed; }
 
     // Move obstacle towards viewer and reset position to starting point when
     // obstacle reaches screen height.
