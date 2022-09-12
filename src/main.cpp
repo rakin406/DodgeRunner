@@ -3,6 +3,9 @@
 #include "../include/player.h"
 #include "raylib.h"
 #include <fmt/core.h>
+#include <vector>
+
+#define DEFAULT_OBSTACLES 10
 
 // Program main entry point
 int main()
@@ -22,9 +25,13 @@ int main()
     // Initialize cube as player
     Player player;
 
-    // Initialize obstacle
-    // TODO: Create a vector of obstacles
-    Obstacle obstacle;
+    // Initialize obstacles
+    std::vector<Obstacle> obstacles;
+    for (int i = 0; i < DEFAULT_OBSTACLES; ++i)
+    {
+        Obstacle obs;
+        obstacles.push_back(obs);
+    }
 
     // TODO: Increment score with a bit of delay
     int score = 0;
@@ -46,19 +53,20 @@ int main()
             player.move(Direction::Right);
         }
 
-        obstacle.loopTowardsViewer();
+        // Move obstacles towards viewer
+        for (auto &elem : obstacles)
+        {
+            elem.loopTowardsViewer();
+        }
 
         ++score;
-        switch (score)
+        // Increase speed of obstacles according to score
+        for (auto &elem : obstacles)
         {
-        case 5000:
-            obstacle.setSpeed(1.5F);
-            break;
-        case 10000:
-            obstacle.setSpeed(2.0F);
-            break;
-        default:
-            break;
+            if (score % 5000 == 0)
+            {
+                elem.setSpeed(elem.getSpeed() + 0.5F);
+            }
         }
 
         ////////////// Draw ///////////////
@@ -78,8 +86,11 @@ int main()
         // Draw player cube
         player.draw();
 
-        // Draw obstacle
-        obstacle.draw();
+        // Draw obstacles
+        for (auto &elem : obstacles)
+        {
+            elem.draw();
+        }
 
         EndMode3D();
 

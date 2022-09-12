@@ -27,6 +27,7 @@ void Obstacle::loopTowardsViewer()
 
 void Obstacle::resetPosition()
 {
+    // TODO: Make this random
     Vector3 startingPosition = {0.0F, 0.0F, (float)-SCREEN::height};
     this->setPosition(startingPosition);
 }
