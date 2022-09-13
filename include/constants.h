@@ -3,6 +3,7 @@
 
 #include "raylib.h"
 #include <array>
+#include <string>
 
 const float CUBE_SIZE = 2.0F;
 const int FONT_SIZE = 30;
@@ -22,6 +23,7 @@ namespace screen
 {
 const int WIDTH = 1000;
 const int HEIGHT = 750;
+const std::string TITLE = "Dodge Runner";
 } // namespace screen
 
 namespace camera

@@ -14,7 +14,7 @@
 int main()
 {
     // Initialization
-    InitWindow(screen::WIDTH, screen::HEIGHT, "Dodge Runner");
+    InitWindow(screen::WIDTH, screen::HEIGHT, screen::TITLE.c_str());
 
     // Define the camera to look into our 3d world
     Camera3D camera = {{0}};
