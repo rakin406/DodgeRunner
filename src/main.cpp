@@ -10,6 +10,13 @@ const unsigned int SEED = 0xaabbccff;
 const int FPS = 60;
 
 /**
+ * View score on screen.
+ *
+ * @param score Player score.
+ */
+void viewScore(int score);
+
+/**
  * Return true if player cube collides with any obstacles.
  *
  * @param player Player cube.
@@ -102,9 +109,7 @@ int main()
 
         ClearBackground(RAYWHITE);
 
-        // View score
-        DrawText(fmt::format("Score: {}", score).c_str(), 15, 15, FONT_SIZE,
-                 BLACK);
+        viewScore(score);
 
         BeginMode3D(camera);
 
@@ -129,6 +134,11 @@ int main()
     CloseWindow();
 
     return 0;
+}
+
+void viewScore(int score)
+{
+    DrawText(fmt::format("Score: {}", score).c_str(), 15, 15, FONT_SIZE, BLACK);
 }
 
 bool checkCollision(Player player, const std::vector<Obstacle> &obstacles)
