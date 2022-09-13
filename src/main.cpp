@@ -101,8 +101,13 @@ int main()
 
         ClearBackground(RAYWHITE);
 
-        // Draw stuff only if pause is false
-        if (!pause)
+        // TODO: Make this code branch cleaner and shorter
+        // Draw menu if pause is true
+        if (pause)
+        {
+            menu::draw();
+        }
+        else
         {
             viewScore(score);
 
