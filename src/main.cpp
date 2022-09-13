@@ -101,23 +101,28 @@ int main()
 
         ClearBackground(RAYWHITE);
 
-        viewScore(score);
-
-        BeginMode3D(camera);
-
-        // Draw ground
-        DrawPlane((Vector3){0.0F, -CUBE_SIZE, 0.0F}, ground::SIZE, LIGHTGRAY);
-
-        // Draw player cube
-        player.draw();
-
-        // Draw obstacles
-        for (auto &elem : obstacles)
+        // Draw stuff only if pause is false
+        if (!pause)
         {
-            elem.draw();
-        }
+            viewScore(score);
 
-        EndMode3D();
+            BeginMode3D(camera);
+
+            // Draw ground
+            DrawPlane((Vector3){0.0F, -CUBE_SIZE, 0.0F}, ground::SIZE,
+                      LIGHTGRAY);
+
+            // Draw player cube
+            player.draw();
+
+            // Draw obstacles
+            for (auto &elem : obstacles)
+            {
+                elem.draw();
+            }
+
+            EndMode3D();
+        }
 
         EndDrawing();
     }
