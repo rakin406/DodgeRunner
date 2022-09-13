@@ -1,17 +1,14 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include <array>
-#include <string>
-
-namespace menu
+// This class contains all the functions of menu screen
+class Menu
 {
-// All options for menu screen. The gaps are for centering position.
-const std::array<std::string, 4> OPTIONS = {"  Play", "Resume", "Restart",
-                                            "  Quit"};
+public:
+    // Draw all options in menu
+    void draw();
 
-// Draw all options in menu
-void draw();
-} // namespace menu
+private:
+};
 
 #endif

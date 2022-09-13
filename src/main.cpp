@@ -7,8 +7,8 @@
 #include <iostream>
 #include <vector>
 
-const unsigned int SEED = 0xaabbccff;
-const int FPS = 60;
+#define SEED 0xaabbccff
+#define FPS 60
 
 // Program main entry point
 int main()
@@ -35,6 +35,9 @@ int main()
         Obstacle obs;
         obstacles.push_back(obs);
     }
+
+    // Initialize menu
+    Menu menu;
 
     int score = 0;
     bool collision = false;
@@ -105,7 +108,7 @@ int main()
         // Draw menu if pause is true
         if (pause)
         {
-            menu::draw();
+            menu.draw();
         }
         else
         {
