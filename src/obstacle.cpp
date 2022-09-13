@@ -1,4 +1,8 @@
 #include "../include/obstacle.h"
+#include "../include/constants.h"
+
+const int MIN_START_POS = -300;
+const int MAX_START_POS = -200;
 
 Obstacle::Obstacle() { this->resetPosition(); }
 

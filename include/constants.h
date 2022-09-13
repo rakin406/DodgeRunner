@@ -8,7 +8,6 @@ const float CUBE_SIZE = 2.0F;
 const int FONT_SIZE = 30;
 
 const int DEFAULT_OBSTACLES = 10;
-const float DEFAULT_OBSTACLE_SPEED = 1.0F;
 
 // After the specified score, increase the obstacle speed.
 const int SCORE_INCREMENT = 5000;
