@@ -16,13 +16,11 @@ void Menu::draw()
     int menuFontSize = FONT_SIZE + 15;
     int gap = 65;
 
-    int cursorIndex = 0;
-
     // Draw all options
     for (const auto &option : OPTIONS)
     {
         // Highlight option on cursor
-        if (option == OPTIONS[cursorIndex])
+        if (option == OPTIONS[this->getCursorIndex()])
         {
             DrawText(option.c_str(), optionX, optionY, menuFontSize, GREEN);
         }
