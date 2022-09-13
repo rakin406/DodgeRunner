@@ -25,7 +25,7 @@ int main()
     InitWindow(screen::WIDTH, screen::HEIGHT, "Dodge Runner");
 
     // Define the camera to look into our 3d world
-    Camera3D camera = {0};
+    Camera3D camera = {{0}};
     camera.position = camera::POSITION;
     camera.target = (Vector3){0.0F, 1.0F, 0.0F}; // Camera looking at point
     camera.up = (Vector3){0.0F, 1.0F,
@@ -76,11 +76,7 @@ int main()
             {
                 player.move(Direction::Right);
             }
-        }
 
-        // Ensure no collision
-        if (!collision)
-        {
             // Updating obstacles
             for (auto &elem : obstacles)
             {
