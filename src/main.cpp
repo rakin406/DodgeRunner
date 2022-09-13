@@ -1,4 +1,5 @@
 #include "../include/constants.h"
+#include "../include/menu.h"
 #include "../include/obstacle.h"
 #include "../include/player.h"
 #include "../include/utils.h"
@@ -37,6 +38,7 @@ int main()
 
     int score = 0;
     bool collision = false;
+    bool pause = false;
 
     // Set a custom random seed for random number generation.
     // Needed for random obstacle position.
@@ -58,8 +60,14 @@ int main()
             collision = true;
         }
 
-        // Ensure no collision
-        if (!collision)
+        // Toggle pause whenever player presses ESC
+        if (IsKeyPressed(KEY_ESCAPE))
+        {
+            pause = !pause;
+        }
+
+        // Stop movement if collision occurs and if pause is true
+        if (!collision && !pause)
         {
             // Player movement
             if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A))
