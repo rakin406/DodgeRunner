@@ -1,29 +1,13 @@
 #include "../include/constants.h"
 #include "../include/obstacle.h"
 #include "../include/player.h"
+#include "../include/utils.h"
 #include "raylib.h"
-#include <fmt/core.h>
 #include <iostream>
 #include <vector>
 
 const unsigned int SEED = 0xaabbccff;
 const int FPS = 60;
-
-/**
- * View score on screen.
- *
- * @param score Player score.
- */
-void viewScore(int score);
-
-/**
- * Return true if player cube collides with any obstacles.
- *
- * @param player Player cube.
- * @param obstacles Obstacles.
- * @return boolean.
- */
-bool checkCollision(Player player, const std::vector<Obstacle> &obstacles);
 
 // Program main entry point
 int main()
@@ -134,34 +118,4 @@ int main()
     CloseWindow();
 
     return 0;
-}
-
-void viewScore(int score)
-{
-    DrawText(fmt::format("Score: {}", score).c_str(), 15, 15, FONT_SIZE, BLACK);
-}
-
-bool checkCollision(Player player, const std::vector<Obstacle> &obstacles)
-{
-    Vector3 playerPosition = player.getPosition();
-    for (const auto &elem : obstacles)
-    {
-        Vector3 obstaclePosition = elem.getPosition();
-        // FIX: Collision only returns true if player touches the left and right
-        // sides of the obstacle, not the front side.
-        return CheckCollisionBoxes(
-            (BoundingBox){(Vector3){playerPosition.x - CUBE_SIZE / 2,
-                                    playerPosition.y - CUBE_SIZE / 2,
-                                    playerPosition.z - CUBE_SIZE / 2},
-                          (Vector3){playerPosition.x + CUBE_SIZE / 2,
-                                    playerPosition.y + CUBE_SIZE / 2,
-                                    playerPosition.z + CUBE_SIZE / 2}},
-            (BoundingBox){(Vector3){obstaclePosition.x - CUBE_SIZE / 2,
-                                    obstaclePosition.y - CUBE_SIZE / 2,
-                                    obstaclePosition.z - CUBE_SIZE / 2},
-                          (Vector3){obstaclePosition.x + CUBE_SIZE / 2,
-                                    obstaclePosition.y + CUBE_SIZE / 2,
-                                    obstaclePosition.z + CUBE_SIZE / 2}});
-    }
-    return false;
 }
