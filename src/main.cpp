@@ -51,6 +51,9 @@ int main()
     // Needed for random obstacle position.
     SetRandomSeed(SEED);
 
+    // Don't quit on ESC
+    SetExitKey(KEY_NULL);
+
     SetTargetFPS(FPS);
 
     // Main game loop
