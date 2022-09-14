@@ -4,9 +4,31 @@
 #include <array>
 #include <string>
 
+// TODO: Check movement
+
 // All options for menu screen. The gaps are for centering position.
 const std::array<std::string, 4> OPTIONS = {"  Play", "Resume", "Restart",
                                             "  Quit"};
+
+// Directions to move cursor
+const int UP = 1;
+const int DOWN = -1;
+
+void Menu::moveCursor(int direction)
+{
+    int currentIndex = this->getCursorIndex();
+    int maxIndex = OPTIONS.size() - 1;
+
+    // Don't go beyond limit
+    if (direction == UP && currentIndex != 0)
+    {
+        this->setCursorIndex(currentIndex - 1);
+    }
+    else if (direction == DOWN && currentIndex != maxIndex)
+    {
+        this->setCursorIndex(this->getCursorIndex() + 1);
+    }
+}
 
 void Menu::draw()
 {

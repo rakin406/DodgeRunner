@@ -22,6 +22,13 @@ public:
     // Draw all options in menu
     void draw();
 
+    /**
+     * Get movement direction and change cursor index according to that.
+     *
+     * @param direction Direction of the cursor.
+     */
+    void moveCursor(int direction);
+
 private:
     int cursorIndex = 0; // Index of the option under cursor
 };

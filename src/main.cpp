@@ -41,7 +41,8 @@ int main()
 
     int score = 0;
     bool collision = false;
-    bool pause = false;
+    bool pause = true;
+    bool inGame = false;
 
     // Set a custom random seed for random number generation.
     // Needed for random obstacle position.
@@ -57,45 +58,49 @@ int main()
     {
         ////////////// Update //////////////
 
-        // Stop game if player and obstacle collides
-        if (checkCollision(player, obstacles))
+        // Don't start game automatically
+        if (inGame)
         {
-            collision = true;
-        }
-
-        // Toggle pause whenever player presses ESC
-        if (IsKeyPressed(KEY_ESCAPE))
-        {
-            pause = !pause;
-        }
-
-        // Stop movement if collision occurs and if pause is true
-        if (!collision && !pause)
-        {
-            // Player movement
-            if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A))
+            // Stop game if player and obstacle collides
+            if (checkCollision(player, obstacles))
             {
-                player.move(Direction::Left);
-            }
-            else if (IsKeyPressed(KEY_RIGHT) || IsKeyPressed(KEY_D))
-            {
-                player.move(Direction::Right);
+                collision = true;
             }
 
-            // Updating obstacles
-            for (auto &elem : obstacles)
+            // Toggle pause whenever player presses ESC
+            if (IsKeyPressed(KEY_ESCAPE))
             {
-                // Move obstacles towards viewer
-                elem.loopTowardsViewer();
+                pause = !pause;
+            }
 
-                // Increase speed of obstacles according to score
-                if (score % SCORE_INCREMENT == 0)
+            // Stop movement if collision occurs and if pause is true
+            if (!collision && !pause)
+            {
+                // Player movement
+                if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A))
                 {
-                    elem.setSpeed(elem.getSpeed() + SPEED_INCREMENT);
+                    player.move(Direction::Left);
                 }
-            }
+                else if (IsKeyPressed(KEY_RIGHT) || IsKeyPressed(KEY_D))
+                {
+                    player.move(Direction::Right);
+                }
 
-            ++score;
+                // Updating obstacles
+                for (auto &elem : obstacles)
+                {
+                    // Move obstacles towards viewer
+                    elem.loopTowardsViewer();
+
+                    // Increase speed of obstacles according to score
+                    if (score % SCORE_INCREMENT == 0)
+                    {
+                        elem.setSpeed(elem.getSpeed() + SPEED_INCREMENT);
+                    }
+                }
+
+                ++score;
+            }
         }
 
         ////////////// Draw ///////////////
@@ -106,7 +111,7 @@ int main()
 
         // TODO: Make this code branch cleaner and shorter
         // Draw menu if pause is true
-        if (pause)
+        if (inGame || pause)
         {
             menu.draw();
         }
