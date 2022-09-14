@@ -4,8 +4,6 @@
 #include <array>
 #include <string>
 
-// TODO: Check movement
-
 // All options for menu screen. The gaps are for centering position.
 const std::array<std::string, 4> OPTIONS = {"  Play", "Resume", "Restart",
                                             "  Quit"};
@@ -42,6 +40,16 @@ void Menu::draw()
     // TODO: Replace complex abstractions
     // Draw game title on top
     DrawText(screen::TITLE.c_str(), optionX - 120, 100, titleFontSize, BLACK);
+
+    // Cursor movement
+    if (IsKeyPressed(KEY_UP))
+    {
+        moveCursor(UP);
+    }
+    else if (IsKeyPressed(KEY_DOWN))
+    {
+        moveCursor(DOWN);
+    }
 
     // Draw all options
     for (const auto &option : OPTIONS)
