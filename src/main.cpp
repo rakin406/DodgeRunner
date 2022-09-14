@@ -41,8 +41,8 @@ int main()
 
     int score = 0;
     bool collision = false;
-    bool pause = true;
-    bool inGame = false;
+    bool isStartMenu = true;
+    bool isPauseMenu = false;
 
     // Set a custom random seed for random number generation.
     // Needed for random obstacle position.
@@ -58,8 +58,12 @@ int main()
     {
         ////////////// Update //////////////
 
+        // Start menu screen
+        menu.setIsPauseMenu(isPauseMenu);
+
+        // TODO: Make this code branch shorter and refactor it
         // Don't start game automatically
-        if (inGame)
+        if (!isStartMenu && !isPauseMenu)
         {
             // Stop game if player and obstacle collides
             if (checkCollision(player, obstacles))
@@ -70,11 +74,11 @@ int main()
             // Toggle pause whenever player presses ESC
             if (IsKeyPressed(KEY_ESCAPE))
             {
-                pause = !pause;
+                isPauseMenu = !isPauseMenu;
             }
 
             // Stop movement if collision occurs and if pause is true
-            if (!collision && !pause)
+            if (!collision && !isPauseMenu)
             {
                 // Player movement
                 if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A))
@@ -111,11 +115,11 @@ int main()
 
         // TODO: Make this code branch cleaner and shorter
         // Draw menu if pause is true
-        if (inGame || pause)
+        if (isStartMenu || isPauseMenu)
         {
             menu.draw();
         }
-        else
+        else if (!isStartMenu && !isPauseMenu)
         {
             viewScore(score);
 

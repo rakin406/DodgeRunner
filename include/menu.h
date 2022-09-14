@@ -8,6 +8,20 @@ class Menu
 {
 public:
     /**
+     * Set whether it's pause menu.
+     *
+     * @param pause Boolean for pause menu.
+     */
+    void setIsPauseMenu(bool pause) { isPauseMenu = pause; }
+
+    /**
+     * Get whether it's pause menu.
+     *
+     * @return isPauseMenu.
+     */
+    [[nodiscard]] bool getIsPauseMenu() const { return isPauseMenu; }
+
+    /**
      * Set index of option under cursor.
      *
      * @param index New index of cursor option.
@@ -41,7 +55,11 @@ public:
         return selectedOption;
     }
 
-    // Draw all options in menu
+    /**
+     * Draw menu screen.
+     *
+     * @param inGame Used for filtering out specific in-game options.
+     */
     void draw();
 
     /**
@@ -52,6 +70,7 @@ public:
     void moveCursor(int direction);
 
 private:
+    bool isPauseMenu = false;   // Whether it's pause screen.
     int cursorIndex = 0;        // Index of the option under cursor
     std::string selectedOption; // Selected menu option
 };
