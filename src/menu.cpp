@@ -2,7 +2,6 @@
 #include "../include/constants.h"
 #include "raylib.h"
 #include <array>
-#include <string>
 
 // All options for menu screen. The gaps are for centering position.
 const std::array<std::string, 4> OPTIONS = {"  Play", "Resume", "Restart",
@@ -49,6 +48,12 @@ void Menu::draw()
     else if (IsKeyPressed(KEY_DOWN))
     {
         moveCursor(DOWN);
+    }
+
+    // Set selected option on Enter
+    if (IsKeyPressed(KEY_ENTER))
+    {
+        this->setSelectedOption(OPTIONS[this->getCursorIndex()]);
     }
 
     // Draw all options
