@@ -4,31 +4,22 @@
 void Player::move(Direction direction)
 {
     Vector3 newPosition = this->getPosition();
+    int currentRow = this->getCurrentRow();
 
-    // Check direction
-    if (direction == Direction::Left)
+    // Check direction and don't go beyond row boundary
+    if (direction == Direction::Left && currentRow > LEFT_ROW)
     {
-        // Don't go beyond row boundary
-        if (this->getCurrentRow() > LEFT_ROW)
-        {
-            newPosition.x -= CUBE_SIZE;
+        newPosition.x -= CUBE_SIZE;
 
-            // Shift row to left
-            int currentRow = this->getCurrentRow();
-            this->setCurrentRow(currentRow - 1);
-        }
+        // Shift row to left
+        this->setCurrentRow(currentRow - 1);
     }
-    else
+    else if (direction == Direction::Right && currentRow < RIGHT_ROW)
     {
-        // Don't go beyond row boundary
-        if (this->getCurrentRow() < RIGHT_ROW)
-        {
-            newPosition.x += CUBE_SIZE;
+        newPosition.x += CUBE_SIZE;
 
-            // Shift row to right
-            int currentRow = this->getCurrentRow();
-            this->setCurrentRow(currentRow + 1);
-        }
+        // Shift row to right
+        this->setCurrentRow(currentRow + 1);
     }
 
     this->setPosition(newPosition);
