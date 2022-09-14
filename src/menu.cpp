@@ -4,10 +4,10 @@
 #include <array>
 #include <string>
 
-// Options for menu screen. The gaps are for centering position.
-const std::array<std::string, 2> OPTIONS_IN_MENU = {"  Play", "  Quit"};
+// Options for start menu. The gaps are for centering position.
+const std::array<std::string, 2> OPTIONS_IN_START = {"  Play", "  Quit"};
 
-// Options for pause screen. The gaps are for centering position.
+// Options for pause menu. The gaps are for centering position.
 const std::array<std::string, 3> OPTIONS_IN_PAUSE = {"Resume", "Restart",
                                                      "  Quit"};
 
@@ -34,7 +34,7 @@ void Menu::moveCursor(int direction)
     }
     else
     {
-        maxIndex = OPTIONS_IN_MENU.size() - 1;
+        maxIndex = OPTIONS_IN_START.size() - 1;
     }
 
     // Don't go beyond limit
@@ -60,7 +60,7 @@ void Menu::draw()
     }
     else
     {
-        currentOption = OPTIONS_IN_MENU[this->getCursorIndex()];
+        currentOption = OPTIONS_IN_START[this->getCursorIndex()];
     }
 
     // TODO: Remove these hard-coded measurements
@@ -91,9 +91,9 @@ void drawOptions(const std::string &currentOption, bool isPause)
 {
     // TODO: Remove all these hard-coded measurements
     int optionX = screen::WIDTH / 2 - 70;
-    int optionY = screen::HEIGHT / 2 - 105;
+    int optionY = screen::HEIGHT / 2 - 50;
     int optionFontSize = FONT_SIZE + 15;
-    int gap = 65;
+    int gap = 75;
 
     // TODO: MUST refactor this large dirty code
     if (isPause)
@@ -116,7 +116,7 @@ void drawOptions(const std::string &currentOption, bool isPause)
     }
     else
     {
-        for (const auto &option : OPTIONS_IN_MENU)
+        for (const auto &option : OPTIONS_IN_START)
         {
             // Highlight option on cursor
             if (option == currentOption)

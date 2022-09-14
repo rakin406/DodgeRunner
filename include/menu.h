@@ -8,6 +8,20 @@ class Menu
 {
 public:
     /**
+     * Set whether it's start menu.
+     *
+     * @param start Boolean for pause menu.
+     */
+    void setIsStartMenu(bool start) { isStartMenu = start; }
+
+    /**
+     * Get whether it's start menu.
+     *
+     * @return isStartMenu.
+     */
+    [[nodiscard]] bool getIsStartMenu() const { return isStartMenu; }
+
+    /**
      * Set whether it's pause menu.
      *
      * @param pause Boolean for pause menu.
@@ -57,8 +71,6 @@ public:
 
     /**
      * Draw menu screen.
-     *
-     * @param inGame Used for filtering out specific in-game options.
      */
     void draw();
 
@@ -70,7 +82,8 @@ public:
     void moveCursor(int direction);
 
 private:
-    bool isPauseMenu = false;   // Whether it's pause screen.
+    bool isStartMenu = true;    // Whether it's start menu.
+    bool isPauseMenu = false;   // Whether it's pause menu.
     int cursorIndex = 0;        // Index of the option under cursor
     std::string selectedOption; // Selected menu option
 };
