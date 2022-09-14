@@ -1,14 +1,11 @@
+#include "raylib.h"
+#include <vector>
+
 #include "../include/constants.h"
 #include "../include/menu.h"
 #include "../include/obstacle.h"
 #include "../include/player.h"
 #include "../include/utils.h"
-#include "raylib.h"
-#include <iostream>
-#include <vector>
-
-#define SEED 0xaabbccff
-#define FPS 60
 
 // Program main entry point
 int main()
@@ -44,12 +41,12 @@ int main()
 
     // Set a custom random seed for random number generation.
     // Needed for random obstacle position.
-    SetRandomSeed(SEED);
+    SetRandomSeed(0xaabbccff);
 
     // Don't quit on ESC
     SetExitKey(KEY_NULL);
 
-    SetTargetFPS(FPS);
+    SetTargetFPS(60);
 
     // Main game loop
     while (!WindowShouldClose())

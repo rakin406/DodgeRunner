@@ -1,7 +1,8 @@
-#include "../include/utils.h"
-#include "../include/constants.h"
 #include "raylib.h"
 #include <fmt/core.h>
+
+#include "../include/constants.h"
+#include "../include/utils.h"
 
 void viewScore(int score)
 {

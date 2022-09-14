@@ -1,8 +1,9 @@
-#include "../include/menu.h"
-#include "../include/constants.h"
 #include "raylib.h"
 #include <array>
 #include <string>
+
+#include "../include/constants.h"
+#include "../include/menu.h"
 
 // Options for start menu. The gaps are for centering position.
 const std::array<std::string, 2> OPTIONS_IN_START = {"  Play", "  Quit"};

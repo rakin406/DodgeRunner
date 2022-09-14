@@ -1,9 +1,10 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include "../include/obstacle.h"
-#include "../include/player.h"
 #include <vector>
+
+#include "obstacle.h"
+#include "player.h"
 
 /**
  * View score on screen.
