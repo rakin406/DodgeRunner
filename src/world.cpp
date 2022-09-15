@@ -9,6 +9,10 @@
 
 World::World()
 {
+    // Set a custom random seed for random number generation.
+    // Needed for random obstacle position.
+    SetRandomSeed(0xaabbccff);
+
     // Define the camera to look into our 3d world
     this->camera.position = camera::POSITION;
     this->camera.target =
@@ -18,16 +22,8 @@ World::World()
     this->camera.fovy = camera::FOV;              // Camera field-of-view Y
     this->camera.projection = CAMERA_PERSPECTIVE; // Camera mode type
 
-    // Initialize obstacles
-    for (int i = 0; i < DEFAULT_OBSTACLES; ++i)
-    {
-        Obstacle obs;
-        this->obstacles.push_back(obs);
-    }
-
-    // Set a custom random seed for random number generation.
-    // Needed for random obstacle position.
-    SetRandomSeed(0xaabbccff);
+    // Initialize values
+    this->reset();
 }
 
 void World::draw()
@@ -96,4 +92,23 @@ void World::play()
 
     // Finally draw the world
     this->draw();
+}
+
+void World::pause() { this->isPaused = true; }
+
+void World::resume() { this->isPaused = false; }
+
+void World::reset()
+{
+    this->obstacles = {};     // Empty obstacles
+    this->isCollided = false; // Reset collision
+    this->isPaused = false;   // Stop pause
+    this->score = 0;          // Reset score
+
+    // Re-initialize obstacles
+    for (int i = 0; i < DEFAULT_OBSTACLES; ++i)
+    {
+        Obstacle obs;
+        this->obstacles.push_back(obs);
+    }
 }
