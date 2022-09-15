@@ -13,6 +13,9 @@ void utils::menu::drawOptions(const std::string &currentOption, bool isPaused)
     int optionFontSize = FONT_SIZE + 15;
     int gap = 75;
 
+    BeginDrawing();
+    ClearBackground(RAYWHITE);
+
     // TODO: MUST refactor this large dirty code
     if (isPaused)
     {
@@ -50,6 +53,8 @@ void utils::menu::drawOptions(const std::string &currentOption, bool isPaused)
             optionY += gap;
         }
     }
+
+    EndDrawing();
 }
 
 void utils::world::drawGround()

@@ -22,34 +22,41 @@ World::World()
     this->camera.fovy = camera::FOV;              // Camera field-of-view Y
     this->camera.projection = CAMERA_PERSPECTIVE; // Camera mode type
 
+    // Don't start world automatically
+    this->isStarted = false;
+
     // Initialize values
     this->reset();
 }
 
 void World::draw()
 {
-    BeginDrawing();
-
-    ClearBackground(RAYWHITE);
-
-    utils::world::viewScore(this->score);
-
-    BeginMode3D(this->camera);
-
-    utils::world::drawGround();
-
-    // Draw player cube
-    this->player.draw();
-
-    // Draw obstacles
-    for (auto &elem : this->obstacles)
+    // Don't draw if game is paused
+    if (this->isStarted && !this->isPaused)
     {
-        elem.draw();
+        BeginDrawing();
+
+        ClearBackground(RAYWHITE);
+
+        utils::world::viewScore(this->score);
+
+        BeginMode3D(this->camera);
+
+        utils::world::drawGround();
+
+        // Draw player cube
+        this->player.draw();
+
+        // Draw obstacles
+        for (auto &elem : this->obstacles)
+        {
+            elem.draw();
+        }
+
+        EndMode3D();
+
+        EndDrawing();
     }
-
-    EndMode3D();
-
-    EndDrawing();
 }
 
 void World::play()
@@ -62,7 +69,7 @@ void World::play()
     }
 
     // Stop movement if collision occurs or if game is paused
-    if (!this->isCollided && !this->isPaused)
+    if (this->isStarted && !this->isCollided && !this->isPaused)
     {
         // Player movement
         if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A))
@@ -93,6 +100,8 @@ void World::play()
     // Finally draw the world
     this->draw();
 }
+
+void World::start() { this->isStarted = true; }
 
 void World::pause() { this->isPaused = true; }
 

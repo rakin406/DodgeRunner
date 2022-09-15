@@ -11,7 +11,7 @@ int main()
     InitWindow(screen::WIDTH, screen::HEIGHT, screen::TITLE.c_str());
 
     // Initialize menu
-    // Menu menu;
+    Menu menu;
 
     // Initialize world
     World world;
@@ -24,7 +24,7 @@ int main()
     // Main game loop
     while (!WindowShouldClose())
     {
-        // menu.draw();
+        menu.draw();
         world.play();
     }
 

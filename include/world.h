@@ -15,12 +15,14 @@ public:
     Player player;                   // Initialize cube as player
     std::vector<Obstacle> obstacles; // Initialize obstacles
     bool isCollided;                 // Player and obstacle collision boolean
+    bool isStarted;                  // Boolean for checking start
     bool isPaused;                   // Boolean for checking pause
     int score;                       // Player score
 
     World();
     void draw();
     void play();
+    void start();
     void pause();
     void resume();
     void reset();
