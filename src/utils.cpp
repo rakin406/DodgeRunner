@@ -18,8 +18,6 @@ bool utils::world::checkCollision(Player player, Obstacle obstacle)
     Vector3 playerPos = player.position;
     Vector3 obstaclePos = obstacle.position;
 
-    // FIX: Collision only returns true if player touches the left and right
-    // sides of the obstacle, not the front side.
     return CheckCollisionBoxes(
         (BoundingBox){
             (Vector3){playerPos.x - CUBE_SIZE / 2, playerPos.y - CUBE_SIZE / 2,
