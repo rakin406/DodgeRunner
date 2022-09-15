@@ -1,10 +1,15 @@
 #include "../include/obstacle.h"
 #include "../include/constants.h"
 
-const int MIN_START_POS = -300;
-const int MAX_START_POS = -200;
+#define MIN_START_POS (-300)
+#define MAX_START_POS (-200)
+#define DEFAULT_SPEED 1.0F
 
-Obstacle::Obstacle() { this->resetPosition(); }
+Obstacle::Obstacle()
+{
+    this->resetPosition();
+    this->speed = DEFAULT_SPEED;
+}
 
 void Obstacle::loopTowardsViewer()
 {

@@ -6,8 +6,15 @@
 #include "../include/utils.h"
 
 // Directions to move cursor
-const int UP = 1;
-const int DOWN = -1;
+#define UP 1
+#define DOWN -1
+
+Menu::Menu()
+{
+    this->isStartMenu = true;
+    this->isPauseMenu = false;
+    this->cursorIndex = 0;
+}
 
 void Menu::moveCursor(int direction)
 {

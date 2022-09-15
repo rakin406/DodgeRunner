@@ -15,10 +15,12 @@ const std::array<std::string, 3> OPTIONS_IN_PAUSE = {"Resume", "Restart",
 class Menu
 {
 public:
-    bool isStartMenu = true;    // Whether it's start menu.
-    bool isPauseMenu = false;   // Whether it's pause menu.
-    int cursorIndex = 0;        // Index of the option under cursor
+    bool isStartMenu;           // Whether it's start menu.
+    bool isPauseMenu;           // Whether it's pause menu.
+    int cursorIndex;            // Index of the option under cursor
     std::string selectedOption; // Selected menu option
+
+    Menu();
 
     /**
      * Draw menu screen.

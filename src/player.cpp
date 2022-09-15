@@ -1,6 +1,16 @@
 #include "../include/player.h"
 #include "../include/constants.h"
 
+#define LEFT_ROW 1
+#define MIDDLE_ROW 2
+#define RIGHT_ROW 3
+
+Player::Player()
+{
+    this->position = {0.0F, 0.0F, 0.0F};
+    this->currentRow = MIDDLE_ROW;
+}
+
 void Player::move(Direction direction)
 {
     Vector3 newPosition = this->position;

@@ -3,14 +3,12 @@
 
 #include "raylib.h"
 
-const float DEFAULT_SPEED = 1.0F;
-
 // This class contains all the functions of a single obstacle
 class Obstacle
 {
 public:
-    Vector3 position = {};       // Obstacle position
-    float speed = DEFAULT_SPEED; // Obstacle movement speed
+    Vector3 position; // Obstacle position
+    float speed;      // Obstacle movement speed
 
     Obstacle();
 
