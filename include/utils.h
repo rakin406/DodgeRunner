@@ -6,6 +6,9 @@
 #include "obstacle.h"
 #include "player.h"
 
+// Draw ground on screen
+void drawGround();
+
 /**
  * View score on screen.
  *

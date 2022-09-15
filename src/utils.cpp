@@ -4,6 +4,11 @@
 #include "../include/constants.h"
 #include "../include/utils.h"
 
+void drawGround()
+{
+    DrawPlane((Vector3){0.0F, -CUBE_SIZE, 0.0F}, ground::SIZE, LIGHTGRAY);
+}
+
 void viewScore(int score)
 {
     DrawText(fmt::format("Score: {}", score).c_str(), 15, 15, FONT_SIZE, BLACK);
