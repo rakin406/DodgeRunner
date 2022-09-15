@@ -15,18 +15,19 @@ void Player::move(Direction direction)
 {
     Vector3 newPosition = this->position;
     int row = this->currentRow;
+    float distance = CUBE_SIZE + ground::GAP / 2;
 
     // Check direction and don't go beyond row boundary
     if (direction == Direction::Left && row > LEFT_ROW)
     {
-        newPosition.x -= CUBE_SIZE;
+        newPosition.x -= distance;
 
         // Shift row to left
         this->currentRow = row - 1;
     }
     else if (direction == Direction::Right && row < RIGHT_ROW)
     {
-        newPosition.x += CUBE_SIZE;
+        newPosition.x += distance;
 
         // Shift row to right
         this->currentRow = row + 1;

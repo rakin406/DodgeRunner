@@ -16,9 +16,6 @@ const int SCORE_INCREMENT = 5000;
 // Used for incrementing to the original speed
 const float SPEED_INCREMENT = 0.5F;
 
-// The middle row position is 0.0F
-const std::array<float, 3> ROW_POSITIONS = {-CUBE_SIZE, 0.0F, CUBE_SIZE};
-
 namespace screen
 {
 const int WIDTH = 1000;
@@ -34,8 +31,13 @@ const float FOV = 45.0F;
 
 namespace ground
 {
-const float WIDTH = CUBE_SIZE * 3.5F;
+const float GAP = CUBE_SIZE / 2;
+const float WIDTH = (CUBE_SIZE * 3.5F) + GAP;
 const Vector2 SIZE = {WIDTH, (float)screen::HEIGHT};
 } // namespace ground
+
+// The middle row position is 0.0F
+const std::array<float, 3> ROW_POSITIONS = {-CUBE_SIZE - ground::GAP / 2, 0.0F,
+                                            CUBE_SIZE + ground::GAP / 2};
 
 #endif
