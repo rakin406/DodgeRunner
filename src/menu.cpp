@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include <string>
+#include <vector>
 
 #include "../include/constants.h"
 #include "../include/menu.h"
@@ -58,46 +59,34 @@ void Menu::drawOptions(const std::string &currentOption)
     int optionY = screen::HEIGHT / 2 - 50;
     int optionFontSize = FONT_SIZE + 15;
     int gap = 75;
+    std::vector<std::string> options;
+
+    // Set options differently for menu and pause screen
+    if (this->isStartMenu)
+    {
+        options = {OPTIONS_IN_START.begin(), OPTIONS_IN_START.end()};
+    }
+    else if (this->isPauseMenu)
+    {
+        options = {OPTIONS_IN_PAUSE.begin(), OPTIONS_IN_PAUSE.end()};
+    }
 
     BeginDrawing();
     ClearBackground(RAYWHITE);
 
-    // TODO: MUST refactor this large dirty code
-    if (this->isPauseMenu)
+    // Draw options
+    for (const auto &opt : options)
     {
-        for (const auto &option : OPTIONS_IN_PAUSE)
+        // Highlight option on cursor
+        if (opt == currentOption)
         {
-            // Highlight option on cursor
-            if (option == currentOption)
-            {
-                DrawText(option.c_str(), optionX, optionY, optionFontSize,
-                         GREEN);
-            }
-            else
-            {
-                DrawText(option.c_str(), optionX, optionY, optionFontSize,
-                         BLACK);
-            }
-            optionY += gap;
+            DrawText(opt.c_str(), optionX, optionY, optionFontSize, GREEN);
         }
-    }
-    else if (this->isStartMenu)
-    {
-        for (const auto &option : OPTIONS_IN_START)
+        else
         {
-            // Highlight option on cursor
-            if (option == currentOption)
-            {
-                DrawText(option.c_str(), optionX, optionY, optionFontSize,
-                         GREEN);
-            }
-            else
-            {
-                DrawText(option.c_str(), optionX, optionY, optionFontSize,
-                         BLACK);
-            }
-            optionY += gap;
+            DrawText(opt.c_str(), optionX, optionY, optionFontSize, BLACK);
         }
+        optionY += gap;
     }
 
     EndDrawing();
