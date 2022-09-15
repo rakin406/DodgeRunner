@@ -19,13 +19,13 @@ void drawGround();
 void viewScore(int score);
 
 /**
- * Return true if player cube collides with any obstacles.
+ * Return true if player cube collides with obstacle.
  *
  * @param player Player cube.
- * @param obstacles Obstacles.
+ * @param obstacle Obstacle.
  * @return boolean.
  */
-bool checkCollision(Player player, const std::vector<Obstacle> &obstacles);
+bool checkCollision(Player player, Obstacle obstacle);
 } // namespace utils::world
 
 #endif

@@ -13,28 +13,23 @@ void utils::world::viewScore(int score)
     DrawText(TextFormat("Score: %i", score), 15, 15, FONT_SIZE, BLACK);
 }
 
-bool utils::world::checkCollision(Player player,
-                                  const std::vector<Obstacle> &obstacles)
+bool utils::world::checkCollision(Player player, Obstacle obstacle)
 {
-    Vector3 playerPosition = player.position;
-    for (const auto &elem : obstacles)
-    {
-        Vector3 obstaclePosition = elem.position;
-        // FIX: Collision only returns true if player touches the left and right
-        // sides of the obstacle, not the front side.
-        return CheckCollisionBoxes(
-            (BoundingBox){(Vector3){playerPosition.x - CUBE_SIZE / 2,
-                                    playerPosition.y - CUBE_SIZE / 2,
-                                    playerPosition.z - CUBE_SIZE / 2},
-                          (Vector3){playerPosition.x + CUBE_SIZE / 2,
-                                    playerPosition.y + CUBE_SIZE / 2,
-                                    playerPosition.z + CUBE_SIZE / 2}},
-            (BoundingBox){(Vector3){obstaclePosition.x - CUBE_SIZE / 2,
-                                    obstaclePosition.y - CUBE_SIZE / 2,
-                                    obstaclePosition.z - CUBE_SIZE / 2},
-                          (Vector3){obstaclePosition.x + CUBE_SIZE / 2,
-                                    obstaclePosition.y + CUBE_SIZE / 2,
-                                    obstaclePosition.z + CUBE_SIZE / 2}});
-    }
-    return false;
+    Vector3 playerPos = player.position;
+    Vector3 obstaclePos = obstacle.position;
+
+    // FIX: Collision only returns true if player touches the left and right
+    // sides of the obstacle, not the front side.
+    return CheckCollisionBoxes(
+        (BoundingBox){
+            (Vector3){playerPos.x - CUBE_SIZE / 2, playerPos.y - CUBE_SIZE / 2,
+                      playerPos.z - CUBE_SIZE / 2},
+            (Vector3){playerPos.x + CUBE_SIZE / 2, playerPos.y + CUBE_SIZE / 2,
+                      playerPos.z + CUBE_SIZE / 2}},
+        (BoundingBox){(Vector3){obstaclePos.x - CUBE_SIZE / 2,
+                                obstaclePos.y - CUBE_SIZE / 2,
+                                obstaclePos.z - CUBE_SIZE / 2},
+                      (Vector3){obstaclePos.x + CUBE_SIZE / 2,
+                                obstaclePos.y + CUBE_SIZE / 2,
+                                obstaclePos.z + CUBE_SIZE / 2}});
 }

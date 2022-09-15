@@ -61,12 +61,6 @@ void World::draw()
 void World::play()
 {
     // TODO: Make this code branch shorter and refactor it
-    // Stop game if player and obstacle collides
-    if (utils::world::checkCollision(player, obstacles))
-    {
-        this->isCollided = true;
-    }
-
     // Stop movement if collision occurs or if game is paused
     if (this->isStarted && !this->isCollided && !this->isPaused)
     {
@@ -90,6 +84,12 @@ void World::play()
             if (this->score % SCORE_INCREMENT == 0)
             {
                 elem.speed = elem.speed + SPEED_INCREMENT;
+            }
+
+            // Stop game if player and obstacle collides
+            if (utils::world::checkCollision(player, elem))
+            {
+                this->isCollided = true;
             }
         }
 
