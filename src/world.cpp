@@ -1,5 +1,4 @@
 #include "raylib.h"
-#include <fmt/core.h>
 #include <vector>
 
 #include "../include/constants.h"

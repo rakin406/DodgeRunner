@@ -1,5 +1,4 @@
 #include "raylib.h"
-#include <fmt/core.h>
 
 #include "../include/constants.h"
 #include "../include/utils.h"
@@ -11,7 +10,7 @@ void utils::world::drawGround()
 
 void utils::world::viewScore(int score)
 {
-    DrawText(fmt::format("Score: {}", score).c_str(), 15, 15, FONT_SIZE, BLACK);
+    DrawText(TextFormat("Score: %i", score), 15, 15, FONT_SIZE, BLACK);
 }
 
 bool utils::world::checkCollision(Player player,
