@@ -7,13 +7,18 @@
 #include "obstacle.h"
 #include "player.h"
 
+namespace utils::menu
+{
 /**
  * Draw options in menu screen.
  *
  * @param currentOption Option under cursor.
  */
 void drawOptions(const std::string &currentOption, bool isPaused);
+} // namespace utils::menu
 
+namespace utils::world
+{
 // Draw ground on screen
 void drawGround();
 
@@ -32,5 +37,6 @@ void viewScore(int score);
  * @return boolean.
  */
 bool checkCollision(Player player, const std::vector<Obstacle> &obstacles);
+} // namespace utils::world
 
 #endif

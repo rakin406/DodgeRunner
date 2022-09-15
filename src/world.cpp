@@ -36,11 +36,11 @@ void World::draw()
 
     ClearBackground(RAYWHITE);
 
-    viewScore(this->score);
+    utils::world::viewScore(this->score);
 
     BeginMode3D(this->camera);
 
-    drawGround();
+    utils::world::drawGround();
 
     // Draw player cube
     this->player.draw();
@@ -60,13 +60,13 @@ void World::play()
 {
     // TODO: Make this code branch shorter and refactor it
     // Stop game if player and obstacle collides
-    if (checkCollision(player, obstacles))
+    if (utils::world::checkCollision(player, obstacles))
     {
         this->isCollided = true;
     }
 
-    // Stop movement if collision occurs
-    if (!this->isCollided)
+    // Stop movement if collision occurs or if game is paused
+    if (!this->isCollided && !this->isPaused)
     {
         // Player movement
         if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A))

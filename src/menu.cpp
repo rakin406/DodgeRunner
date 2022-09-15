@@ -71,5 +71,5 @@ void Menu::draw()
         this->setSelectedOption(currentOption);
     }
 
-    drawOptions(currentOption, this->getIsPauseMenu());
+    utils::menu::drawOptions(currentOption, this->getIsPauseMenu());
 }

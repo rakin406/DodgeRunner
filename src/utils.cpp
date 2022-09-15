@@ -5,7 +5,7 @@
 #include "../include/menu.h"
 #include "../include/utils.h"
 
-void drawOptions(const std::string &currentOption, bool isPaused)
+void utils::menu::drawOptions(const std::string &currentOption, bool isPaused)
 {
     // TODO: Remove all these hard-coded measurements
     int optionX = screen::WIDTH / 2 - 70;
@@ -52,17 +52,18 @@ void drawOptions(const std::string &currentOption, bool isPaused)
     }
 }
 
-void drawGround()
+void utils::world::drawGround()
 {
     DrawPlane((Vector3){0.0F, -CUBE_SIZE, 0.0F}, ground::SIZE, LIGHTGRAY);
 }
 
-void viewScore(int score)
+void utils::world::viewScore(int score)
 {
     DrawText(fmt::format("Score: {}", score).c_str(), 15, 15, FONT_SIZE, BLACK);
 }
 
-bool checkCollision(Player player, const std::vector<Obstacle> &obstacles)
+bool utils::world::checkCollision(Player player,
+                                  const std::vector<Obstacle> &obstacles)
 {
     Vector3 playerPosition = player.getPosition();
     for (const auto &elem : obstacles)
