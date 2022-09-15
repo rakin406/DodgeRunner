@@ -34,14 +34,8 @@ if (NOT raylib_FOUND) # If there's none, fetch and build raylib
     endif()
 endif()
 
-# Include header files
-set(HEADER_FILES include/constants.h include/utils.h include/world.h
-    include/menu.h include/player.h include/obstacle.h)
-
-# Add source files and header implementations
 add_executable(${PROJECT_NAME} src/main.cpp src/utils.cpp src/world.cpp
-    src/menu.cpp src/player.cpp src/obstacle.cpp ${HEADER_FILES})
-
+    src/menu.cpp src/player.cpp src/obstacle.cpp)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 target_link_libraries(${PROJECT_NAME} raylib)
 
