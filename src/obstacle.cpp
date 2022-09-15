@@ -1,7 +1,7 @@
 #include "../include/obstacle.h"
 #include "../include/constants.h"
 
-#define MIN_START_POS (-300)
+#define MIN_START_POS (-800)
 #define MAX_START_POS (-200)
 #define DEFAULT_SPEED 1.0F
 
