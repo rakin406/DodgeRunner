@@ -1,21 +1,10 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include <string>
 #include <vector>
 
 #include "obstacle.h"
 #include "player.h"
-
-namespace utils::menu
-{
-/**
- * Draw options in menu screen.
- *
- * @param currentOption Option under cursor.
- */
-void drawOptions(const std::string &currentOption, bool isPaused);
-} // namespace utils::menu
 
 namespace utils::world
 {

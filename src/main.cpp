@@ -24,12 +24,9 @@ int main()
     // Main game loop
     while (!WindowShouldClose())
     {
-        menu.draw();
+        menu.draw(world);
         world.play();
     }
-
-    // De-Initialization
-    CloseWindow();
 
     return 0;
 }
