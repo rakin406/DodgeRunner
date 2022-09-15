@@ -1,7 +1,15 @@
 #ifndef MENU_H
 #define MENU_H
 
+#include <array>
 #include <string>
+
+// Options for start menu. The gaps are for centering position.
+const std::array<std::string, 2> OPTIONS_IN_START = {"  Play", "  Quit"};
+
+// Options for pause menu. The gaps are for centering position.
+const std::array<std::string, 3> OPTIONS_IN_PAUSE = {"Resume", "Restart",
+                                                     "  Quit"};
 
 // This class contains all the functions of menu screen
 class Menu

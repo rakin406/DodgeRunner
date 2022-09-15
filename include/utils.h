@@ -1,10 +1,18 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include <string>
 #include <vector>
 
 #include "obstacle.h"
 #include "player.h"
+
+/**
+ * Draw options in menu screen.
+ *
+ * @param currentOption Option under cursor.
+ */
+void drawOptions(const std::string &currentOption, bool isPaused);
 
 // Draw ground on screen
 void drawGround();

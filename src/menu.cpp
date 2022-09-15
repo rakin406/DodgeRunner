@@ -1,27 +1,13 @@
 #include "raylib.h"
-#include <array>
 #include <string>
 
 #include "../include/constants.h"
 #include "../include/menu.h"
-
-// Options for start menu. The gaps are for centering position.
-const std::array<std::string, 2> OPTIONS_IN_START = {"  Play", "  Quit"};
-
-// Options for pause menu. The gaps are for centering position.
-const std::array<std::string, 3> OPTIONS_IN_PAUSE = {"Resume", "Restart",
-                                                     "  Quit"};
+#include "../include/utils.h"
 
 // Directions to move cursor
 const int UP = 1;
 const int DOWN = -1;
-
-/**
- * Draw options in menu screen.
- *
- * @param currentOption Option under cursor.
- */
-void drawOptions(const std::string &currentOption, bool isPause);
 
 void Menu::moveCursor(int direction)
 {
@@ -86,51 +72,4 @@ void Menu::draw()
     }
 
     drawOptions(currentOption, this->getIsPauseMenu());
-}
-
-void drawOptions(const std::string &currentOption, bool isPause)
-{
-    // TODO: Remove all these hard-coded measurements
-    int optionX = screen::WIDTH / 2 - 70;
-    int optionY = screen::HEIGHT / 2 - 50;
-    int optionFontSize = FONT_SIZE + 15;
-    int gap = 75;
-
-    // TODO: MUST refactor this large dirty code
-    if (isPause)
-    {
-        for (const auto &option : OPTIONS_IN_PAUSE)
-        {
-            // Highlight option on cursor
-            if (option == currentOption)
-            {
-                DrawText(option.c_str(), optionX, optionY, optionFontSize,
-                         GREEN);
-            }
-            else
-            {
-                DrawText(option.c_str(), optionX, optionY, optionFontSize,
-                         BLACK);
-            }
-            optionY += gap;
-        }
-    }
-    else
-    {
-        for (const auto &option : OPTIONS_IN_START)
-        {
-            // Highlight option on cursor
-            if (option == currentOption)
-            {
-                DrawText(option.c_str(), optionX, optionY, optionFontSize,
-                         GREEN);
-            }
-            else
-            {
-                DrawText(option.c_str(), optionX, optionY, optionFontSize,
-                         BLACK);
-            }
-            optionY += gap;
-        }
-    }
 }
