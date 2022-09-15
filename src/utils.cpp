@@ -65,10 +65,10 @@ void utils::world::viewScore(int score)
 bool utils::world::checkCollision(Player player,
                                   const std::vector<Obstacle> &obstacles)
 {
-    Vector3 playerPosition = player.getPosition();
+    Vector3 playerPosition = player.position;
     for (const auto &elem : obstacles)
     {
-        Vector3 obstaclePosition = elem.getPosition();
+        Vector3 obstaclePosition = elem.position;
         // FIX: Collision only returns true if player touches the left and right
         // sides of the obstacle, not the front side.
         return CheckCollisionBoxes(

@@ -9,35 +9,10 @@ const float DEFAULT_SPEED = 1.0F;
 class Obstacle
 {
 public:
+    Vector3 position = {};       // Obstacle position
+    float speed = DEFAULT_SPEED; // Obstacle movement speed
+
     Obstacle();
-
-    /**
-     * Set obstacle position.
-     *
-     * @param newPosition New position of obstacle.
-     */
-    void setPosition(Vector3 newPosition) { position = newPosition; }
-
-    /**
-     * Get obstacle position.
-     *
-     * @return obstacle position.
-     */
-    [[nodiscard]] Vector3 getPosition() const { return position; }
-
-    /**
-     * Set obstacle movement speed.
-     *
-     * @param newSpeed New speed of obstacle.
-     */
-    void setSpeed(float newSpeed) { speed = newSpeed; }
-
-    /**
-     * Get obstacle movement speed.
-     *
-     * @return obstacle movement speed.
-     */
-    [[nodiscard]] float getSpeed() const { return speed; }
 
     // Move obstacle towards viewer and reset position to starting point when
     // obstacle reaches screen height.
@@ -50,8 +25,6 @@ public:
     void draw() const;
 
 private:
-    Vector3 position = {};       // Obstacle position
-    float speed = DEFAULT_SPEED; // Obstacle movement speed
 };
 
 #endif

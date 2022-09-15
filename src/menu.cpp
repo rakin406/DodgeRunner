@@ -11,11 +11,11 @@ const int DOWN = -1;
 
 void Menu::moveCursor(int direction)
 {
-    int currentIndex = this->getCursorIndex();
+    int currentIndex = this->cursorIndex;
     int maxIndex = 0;
 
     // Set options indexes differently for pause and menu screen
-    if (this->getIsPauseMenu())
+    if (this->isPauseMenu)
     {
         maxIndex = OPTIONS_IN_PAUSE.size() - 1;
     }
@@ -27,11 +27,11 @@ void Menu::moveCursor(int direction)
     // Don't go beyond limit
     if (direction == UP && currentIndex != 0)
     {
-        this->setCursorIndex(currentIndex - 1);
+        this->cursorIndex = currentIndex - 1;
     }
     else if (direction == DOWN && currentIndex != maxIndex)
     {
-        this->setCursorIndex(this->getCursorIndex() + 1);
+        this->cursorIndex = this->cursorIndex + 1;
     }
 }
 
@@ -41,13 +41,13 @@ void Menu::draw()
     std::string currentOption;
 
     // Set current option differently for pause and menu screen
-    if (this->getIsPauseMenu())
+    if (this->isPauseMenu)
     {
-        currentOption = OPTIONS_IN_PAUSE[this->getCursorIndex()];
+        currentOption = OPTIONS_IN_PAUSE[this->cursorIndex];
     }
     else
     {
-        currentOption = OPTIONS_IN_START[this->getCursorIndex()];
+        currentOption = OPTIONS_IN_START[this->cursorIndex];
     }
 
     // TODO: Remove these hard-coded measurements
@@ -68,8 +68,8 @@ void Menu::draw()
     // Set selected option on Enter
     if (IsKeyPressed(KEY_ENTER))
     {
-        this->setSelectedOption(currentOption);
+        this->selectedOption = currentOption;
     }
 
-    utils::menu::drawOptions(currentOption, this->getIsPauseMenu());
+    utils::menu::drawOptions(currentOption, this->isPauseMenu);
 }

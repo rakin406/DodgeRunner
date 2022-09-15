@@ -83,7 +83,7 @@ void World::play()
             // Increase speed of obstacles according to score
             if (this->score % SCORE_INCREMENT == 0)
             {
-                elem.setSpeed(elem.getSpeed() + SPEED_INCREMENT);
+                elem.speed = elem.speed + SPEED_INCREMENT;
             }
         }
 
