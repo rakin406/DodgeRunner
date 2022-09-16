@@ -30,7 +30,8 @@ void Obstacle::resetPosition()
 {
     int randomRowIndex = GetRandomValue(0, ROW_POSITIONS.size() - 1);
     float randomRow = ROW_POSITIONS[randomRowIndex];
-    auto randomColumn = (float)GetRandomValue(MIN_START_POS, MAX_START_POS);
+    auto randomColumn =
+        static_cast<float>(GetRandomValue(MIN_START_POS, MAX_START_POS));
     Vector3 startingPosition = {randomRow, 0.0F, randomColumn};
     this->position = startingPosition;
 }

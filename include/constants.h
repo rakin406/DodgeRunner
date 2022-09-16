@@ -33,7 +33,7 @@ namespace ground
 {
 const float GAP = CUBE_SIZE / 2;
 const float WIDTH = (CUBE_SIZE * 3.5F) + GAP;
-const Vector2 SIZE = {WIDTH, (float)screen::HEIGHT};
+const Vector2 SIZE = {WIDTH, static_cast<float>(screen::HEIGHT)};
 } // namespace ground
 
 // The middle row position is 0.0F
