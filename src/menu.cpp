@@ -55,8 +55,8 @@ void Menu::reset()
 void Menu::drawOptions(const std::string &currentOption)
 {
     // TODO: Remove all these hard-coded measurements
-    int optionX = screen::WIDTH / 2 - 70;
-    int optionY = screen::HEIGHT / 2 - 50;
+    int optionX = GetScreenWidth() / 2 - 70;
+    int optionY = GetScreenHeight() / 2 - 50;
     int optionFontSize = FONT_SIZE + 15;
     int gap = 75;
     std::vector<std::string> options;
@@ -133,7 +133,7 @@ void Menu::draw(World &world)
     // Don't draw if world is on.
     if (!this->isWorldOngoing)
     {
-        DrawText(screen::TITLE.c_str(), screen::WIDTH / 2 - 190, 100,
+        DrawText(screen::TITLE.c_str(), GetScreenWidth() / 2 - 190, 100,
                  titleFontSize, BLACK);
 
         // Cursor movement
