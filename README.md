@@ -7,6 +7,7 @@ A dodging game.
 ### Dependencies
 
 * Clang or GCC compiler
+* Conan
 * CMake
 * make
 
@@ -14,13 +15,12 @@ A dodging game.
 
 * The first command below uses git. You can also download zip version.
 ```bash
-git clone https://github.com/rakin406/DodgeRunner.git
-cd DodgeRunner
-mkdir build
-cd build
+git clone https://github.com/rakin406/DodgeRunner.git && cd DodgeRunner
+mkdir build && cd build
+conan install .. --build=missing
 cmake ..
-make
-./DodgeRunner
+cmake --build .
+./bin/DodgeRunner
 ```
 
 ## Author
