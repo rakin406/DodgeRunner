@@ -133,8 +133,8 @@ void Menu::draw(World &world)
     // Don't draw if world is on.
     if (!this->isWorldOngoing)
     {
-        DrawText(screen::TITLE.c_str(), GetScreenWidth() / 2 - 190, 100,
-                 titleFontSize, BLACK);
+        DrawText(screen::TITLE, GetScreenWidth() / 2 - 190, 100, titleFontSize,
+                 BLACK);
 
         // Cursor movement
         if (IsKeyPressed(KEY_UP))

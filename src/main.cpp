@@ -8,7 +8,7 @@
 int main()
 {
     // Initialization
-    InitWindow(screen::WIDTH, screen::HEIGHT, screen::TITLE.c_str());
+    InitWindow(screen::WIDTH, screen::HEIGHT, screen::TITLE);
 
     // Initialize menu
     Menu menu;
