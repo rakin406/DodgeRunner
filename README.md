@@ -9,7 +9,7 @@ A dodging game.
 * Clang or GCC compiler
 * Conan
 * CMake
-* make
+* Ninja
 
 ### Executing program
 
@@ -18,8 +18,8 @@ A dodging game.
 git clone https://github.com/rakin406/DodgeRunner.git && cd DodgeRunner
 mkdir build && cd build
 conan install .. --build=missing
-cmake ..
-cmake --build .
+cmake .. -G Ninja
+ninja
 ./bin/DodgeRunner
 ```
 
