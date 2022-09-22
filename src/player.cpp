@@ -1,9 +1,9 @@
 #include "../include/player.h"
 #include "../include/constants.h"
 
-static constexpr int LEFT_ROW = 1;
-static constexpr int MIDDLE_ROW = 2;
-static constexpr int RIGHT_ROW = 3;
+constexpr int LEFT_ROW = 1;
+constexpr int MIDDLE_ROW = 2;
+constexpr int RIGHT_ROW = 3;
 
 Player::Player() : currentRow(MIDDLE_ROW)
 {

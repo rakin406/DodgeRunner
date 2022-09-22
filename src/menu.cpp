@@ -7,8 +7,8 @@
 #include "../include/utils.h"
 
 // Directions to move cursor
-static constexpr int UP = 1;
-static constexpr int DOWN = -1;
+constexpr int UP = 1;
+constexpr int DOWN = -1;
 
 void Menu::moveCursor(int direction)
 {
