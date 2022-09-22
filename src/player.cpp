@@ -10,7 +10,7 @@ Player::Player() : currentRow(MIDDLE_ROW)
     this->position = {0.0F, 0.0F, 0.0F};
 }
 
-Vector3 Player::getPosition() { return this->position; }
+Vector3 Player::getPosition() const { return this->position; }
 
 void Player::move(Direction direction)
 {

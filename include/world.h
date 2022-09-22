@@ -12,7 +12,7 @@ class World
 {
 public:
     World();
-    bool isStarted() const;
+    [[nodiscard]] bool isStarted() const;
     void draw();
     void play();
     void start();

@@ -17,7 +17,7 @@ public:
     Player();
 
     // Get player position
-    Vector3 getPosition();
+    [[nodiscard]] Vector3 getPosition() const;
 
     /**
      * Move player cube to specified direction.

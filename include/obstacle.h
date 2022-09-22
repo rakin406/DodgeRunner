@@ -10,10 +10,10 @@ public:
     Obstacle();
 
     // Get obstacle position
-    Vector3 getPosition() const;
+    [[nodiscard]] Vector3 getPosition() const;
 
     // Get obstacle speed
-    float getSpeed() const;
+    [[nodiscard]] float getSpeed() const;
 
     // Set obstacle speed
     void setSpeed(float speed);
