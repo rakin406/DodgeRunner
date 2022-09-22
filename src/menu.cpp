@@ -7,16 +7,8 @@
 #include "../include/utils.h"
 
 // Directions to move cursor
-#define UP 1
-#define DOWN -1
-
-Menu::Menu()
-{
-    this->isStartMenu = true;
-    this->isPauseMenu = false;
-    this->isWorldOngoing = false;
-    this->cursorIndex = 0;
-}
+static constexpr int UP = 1;
+static constexpr int DOWN = -1;
 
 void Menu::moveCursor(int direction)
 {
@@ -26,11 +18,11 @@ void Menu::moveCursor(int direction)
     // Set options indexes differently for pause and menu screen
     if (this->isPauseMenu)
     {
-        maxIndex = OPTIONS_IN_PAUSE.size() - 1;
+        maxIndex = this->OPTIONS_IN_PAUSE.size() - 1;
     }
     else if (this->isStartMenu)
     {
-        maxIndex = OPTIONS_IN_START.size() - 1;
+        maxIndex = this->OPTIONS_IN_START.size() - 1;
     }
 
     // Don't go beyond limit
@@ -42,14 +34,6 @@ void Menu::moveCursor(int direction)
     {
         this->cursorIndex = this->cursorIndex + 1;
     }
-}
-
-void Menu::reset()
-{
-    this->isStartMenu = false;
-    this->isPauseMenu = false;
-    this->isWorldOngoing = true;
-    this->cursorIndex = 0;
 }
 
 void Menu::drawOptions(const std::string &currentOption)
@@ -64,11 +48,13 @@ void Menu::drawOptions(const std::string &currentOption)
     // Set options differently for menu and pause screen
     if (this->isStartMenu)
     {
-        options = {OPTIONS_IN_START.begin(), OPTIONS_IN_START.end()};
+        options = {this->OPTIONS_IN_START.begin(),
+                   this->OPTIONS_IN_START.end()};
     }
     else if (this->isPauseMenu)
     {
-        options = {OPTIONS_IN_PAUSE.begin(), OPTIONS_IN_PAUSE.end()};
+        options = {this->OPTIONS_IN_PAUSE.begin(),
+                   this->OPTIONS_IN_PAUSE.end()};
     }
 
     BeginDrawing();
@@ -98,16 +84,16 @@ void Menu::draw(World &world)
     std::string currentOption;
 
     // World doesn't start automatically, so start menu is opened by default.
-    this->isStartMenu = !world.isStarted;
+    this->isStartMenu = !world.isStarted();
 
     // Set current option differently for pause and menu screen
     if (this->isPauseMenu)
     {
-        currentOption = OPTIONS_IN_PAUSE[this->cursorIndex];
+        currentOption = this->OPTIONS_IN_PAUSE[this->cursorIndex];
     }
     else if (this->isStartMenu)
     {
-        currentOption = OPTIONS_IN_START[this->cursorIndex];
+        currentOption = this->OPTIONS_IN_START[this->cursorIndex];
     }
 
     // Toggle pause on Escape key
@@ -150,23 +136,23 @@ void Menu::draw(World &world)
         if (IsKeyPressed(KEY_ENTER))
         {
             // Start game from menu screen
-            if (currentOption == OPTIONS_IN_START[0])
+            if (currentOption == this->OPTIONS_IN_START[0])
             {
                 world.start();
             }
             // Resume game from pause screen
-            else if (currentOption == OPTIONS_IN_PAUSE[0])
+            else if (currentOption == this->OPTIONS_IN_PAUSE[0])
             {
                 world.resume();
             }
             // Restart game from pause screen
-            else if (currentOption == OPTIONS_IN_PAUSE[1])
+            else if (currentOption == this->OPTIONS_IN_PAUSE[1])
             {
                 world.reset();
             }
             // This is the quit option. It's both in start menu and pause menu
             // and functions the same way.
-            else if (currentOption == OPTIONS_IN_START[1])
+            else if (currentOption == this->OPTIONS_IN_START[1])
             {
                 CloseWindow();
             }
@@ -177,4 +163,12 @@ void Menu::draw(World &world)
         // Draw menu
         this->drawOptions(currentOption);
     }
+}
+
+void Menu::reset()
+{
+    this->isStartMenu = false;
+    this->isPauseMenu = false;
+    this->isWorldOngoing = true;
+    this->cursorIndex = 0;
 }

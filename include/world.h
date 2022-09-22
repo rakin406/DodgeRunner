@@ -11,15 +11,8 @@
 class World
 {
 public:
-    Camera3D camera;                 // Initialize camera
-    Player player;                   // Initialize cube as player
-    std::vector<Obstacle> obstacles; // Initialize obstacles
-    bool isCollided;                 // Player and obstacle collision boolean
-    bool isStarted;                  // Boolean for checking start
-    bool isPaused;                   // Boolean for checking pause
-    int score;                       // Player score
-
     World();
+    bool isStarted() const;
     void draw();
     void play();
     void start();
@@ -28,6 +21,13 @@ public:
     void reset();
 
 private:
+    Camera3D camera{};                 // Initialize camera
+    Player player{};                   // Initialize cube as player
+    std::vector<Obstacle> obstacles{}; // Initialize obstacles
+    bool isCollided{};                 // Player and obstacle collision boolean
+    bool started = false;              // Boolean for checking start
+    bool isPaused{};                   // Boolean for checking pause
+    int score{};                       // Player score
 };
 
 #endif

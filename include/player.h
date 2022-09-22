@@ -14,10 +14,10 @@ enum class Direction
 class Player
 {
 public:
-    Vector3 position; // Player cube position
-    int currentRow;   // Current ground row of player cube
-
     Player();
+
+    // Get player position
+    Vector3 getPosition();
 
     /**
      * Move player cube to specified direction.
@@ -30,6 +30,8 @@ public:
     void draw() const;
 
 private:
+    Vector3 position{}; // Player cube position
+    int currentRow{};   // Current ground row of player cube
 };
 
 #endif

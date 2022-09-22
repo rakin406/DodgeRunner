@@ -1,15 +1,16 @@
 #include "../include/player.h"
 #include "../include/constants.h"
 
-#define LEFT_ROW 1
-#define MIDDLE_ROW 2
-#define RIGHT_ROW 3
+static constexpr int LEFT_ROW = 1;
+static constexpr int MIDDLE_ROW = 2;
+static constexpr int RIGHT_ROW = 3;
 
-Player::Player()
+Player::Player() : currentRow(MIDDLE_ROW)
 {
     this->position = {0.0F, 0.0F, 0.0F};
-    this->currentRow = MIDDLE_ROW;
 }
+
+Vector3 Player::getPosition() { return this->position; }
 
 void Player::move(Direction direction)
 {

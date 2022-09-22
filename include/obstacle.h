@@ -7,10 +7,16 @@
 class Obstacle
 {
 public:
-    Vector3 position; // Obstacle position
-    float speed;      // Obstacle movement speed
-
     Obstacle();
+
+    // Get obstacle position
+    Vector3 getPosition() const;
+
+    // Get obstacle speed
+    float getSpeed() const;
+
+    // Set obstacle speed
+    void setSpeed(float speed);
 
     // Move obstacle towards viewer and reset position to starting point when
     // obstacle reaches screen height.
@@ -23,6 +29,8 @@ public:
     void draw() const;
 
 private:
+    Vector3 position{}; // Obstacle position
+    float speed{};      // Obstacle movement speed
 };
 
 #endif

@@ -15,8 +15,8 @@ void utils::world::viewScore(int score)
 
 bool utils::world::checkCollision(Player player, Obstacle obstacle)
 {
-    Vector3 playerPos = player.position;
-    Vector3 obstaclePos = obstacle.position;
+    Vector3 playerPos = player.getPosition();
+    Vector3 obstaclePos = obstacle.getPosition();
 
     return CheckCollisionBoxes(
         (BoundingBox){

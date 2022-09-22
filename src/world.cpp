@@ -21,17 +21,16 @@ World::World()
     this->camera.fovy = camera::FOV;              // Camera field-of-view Y
     this->camera.projection = CAMERA_PERSPECTIVE; // Camera mode type
 
-    // Don't start world automatically
-    this->isStarted = false;
-
     // Initialize values
     this->reset();
 }
 
+bool World::isStarted() const { return this->started; }
+
 void World::draw()
 {
     // Don't draw if game is paused
-    if (this->isStarted && !this->isPaused)
+    if (this->started && !this->isPaused)
     {
         BeginDrawing();
 
@@ -62,7 +61,7 @@ void World::play()
 {
     // TODO: Make this code branch shorter and refactor it
     // Stop movement if collision occurs or if game is paused
-    if (this->isStarted && !this->isCollided && !this->isPaused)
+    if (this->started && !this->isCollided && !this->isPaused)
     {
         // Player movement
         if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A))
@@ -83,7 +82,7 @@ void World::play()
             // Increase speed of obstacles according to score
             if (this->score % SCORE_INCREMENT == 0)
             {
-                elem.speed = elem.speed + SPEED_INCREMENT;
+                elem.setSpeed(elem.getSpeed() + SPEED_INCREMENT);
             }
 
             // Stop game if player and obstacle collides
@@ -100,7 +99,7 @@ void World::play()
     this->draw();
 }
 
-void World::start() { this->isStarted = true; }
+void World::start() { this->started = true; }
 
 void World::pause() { this->isPaused = true; }
 
