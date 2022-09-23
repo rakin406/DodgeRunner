@@ -19,7 +19,7 @@ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
 add_executable(${PROJECT_NAME} src/main.cpp src/utils.cpp src/world.cpp
-    src/menu.cpp src/player.cpp src/obstacle.cpp)
+    src/player.cpp src/obstacle.cpp)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
 
