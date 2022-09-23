@@ -5,7 +5,9 @@
 
 void utils::world::drawGround()
 {
-    DrawPlane((Vector3){0.0F, -CUBE_SIZE, 0.0F}, ground::SIZE, LIGHTGRAY);
+    float groundWidth = (CUBE_SIZE * 3.5F) + GROUND_GAP;
+    Vector2 groundSize = {groundWidth, static_cast<float>(GetScreenHeight())};
+    DrawPlane((Vector3){0.0F, -CUBE_SIZE, 0.0F}, groundSize, LIGHTGRAY);
 }
 
 void utils::world::viewScore(int score)
@@ -13,7 +15,8 @@ void utils::world::viewScore(int score)
     DrawText(TextFormat("Score: %i", score), 15, 15, FONT_SIZE, BLACK);
 }
 
-bool utils::world::checkCollision(Player player, Obstacle obstacle)
+bool utils::world::checkCollision(const Player &player,
+                                  const Obstacle &obstacle)
 {
     Vector3 playerPos = player.getPosition();
     Vector3 obstaclePos = obstacle.getPosition();

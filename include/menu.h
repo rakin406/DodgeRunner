@@ -1,37 +1,33 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include <array>
 #include <string>
 
-#include "../include/world.h"
+#include "world.h"
 
-// This class contains all the functions of menu screen
+// This class contains all the methods of menu screen
 class Menu
 {
 public:
     /**
-     * Draw menu screen.
+     * Default constructor for Menu initialization.
      *
-     * @param world World screen.
+     * @param world World object pointer.
      */
-    void draw(World &world);
+    explicit Menu(World *world);
+
+    // Draw menu screen
+    void draw();
 
 private:
-    // Options for start menu. The gaps are for centering position.
-    const std::array<std::string, 2> OPTIONS_IN_START = {"  Play", "  Quit"};
-
-    // Options for pause menu. The gaps are for centering position.
-    const std::array<std::string, 3> OPTIONS_IN_PAUSE = {"Resume", "Restart",
-                                                         "  Quit"};
-
+    World *world;                // Pointer to the main world
     bool isStartMenu = true;     // Whether it's start menu
     bool isPauseMenu = false;    // Whether it's pause menu
     bool isWorldOngoing = false; // Boolean for world
     int cursorIndex = 0;         // Index of the option under cursor
 
     /**
-     * Get movement direction and change cursor index according to that.
+     * Get cursor movement direction and change cursor index according to that.
      *
      * @param direction Direction of the cursor.
      */
@@ -44,7 +40,17 @@ private:
      */
     void drawOptions(const std::string &currentOption);
 
-    // Reset values
+    // Toggle pause screen
+    void togglePause();
+
+    /**
+     * Select option under cursor and do it's action.
+     *
+     * @param option Option under cursor.
+     */
+    void selectOption(const std::string &option);
+
+    // Reset member variables
     void reset();
 };
 

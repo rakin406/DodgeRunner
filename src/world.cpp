@@ -6,6 +6,22 @@
 #include "../include/utils.h"
 #include "../include/world.h"
 
+constexpr int DEFAULT_OBSTACLES = 10;
+
+// NOTE: It doesn't increment... This is used for division and the reminder is
+// used for increasing speed. I just need a better name for this variable...
+// After the specified score, increase the obstacle speed.
+constexpr int SCORE_INCREMENT = 5000;
+
+// Used for incrementing to the original speed
+constexpr float SPEED_INCREMENT = 0.5F;
+
+namespace camera
+{
+constexpr Vector3 POSITION = {0.0F, 5.0F, 10.0F};
+constexpr float FOV = 45.0F;
+} // namespace camera
+
 World::World()
 {
     // Set a custom random seed for random number generation.
@@ -34,18 +50,22 @@ void World::draw()
     {
         BeginDrawing();
 
+        // Clear background
         ClearBackground(RAYWHITE);
 
+        // View score at top left
         utils::world::viewScore(this->score);
 
+        // Start viewing in 3D
         BeginMode3D(this->camera);
 
+        // Draw the ground/floor
         utils::world::drawGround();
 
         // Draw player cube
         this->player.draw();
 
-        // Draw obstacles
+        // Draw obstacle cubes
         for (auto &elem : this->obstacles)
         {
             elem.draw();

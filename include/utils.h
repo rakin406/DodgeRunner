@@ -25,7 +25,7 @@ void viewScore(int score);
  * @param obstacle Obstacle.
  * @return boolean.
  */
-bool checkCollision(Player player, Obstacle obstacle);
+bool checkCollision(const Player &player, const Obstacle &obstacle);
 } // namespace utils::world
 
 #endif

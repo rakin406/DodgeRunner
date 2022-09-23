@@ -1,9 +1,15 @@
-#include "../include/obstacle.h"
+#include <array>
+
 #include "../include/constants.h"
+#include "../include/obstacle.h"
 
 constexpr int MIN_START_POS = -800;
 constexpr int MAX_START_POS = -200;
 constexpr float DEFAULT_SPEED = 1.0F;
+
+// The middle row position is 0.0F
+constexpr std::array<float, 3> ROW_POSITIONS = {
+    -CUBE_SIZE - GROUND_GAP / 2, 0.0F, CUBE_SIZE + GROUND_GAP / 2};
 
 Obstacle::Obstacle() : speed(DEFAULT_SPEED) { this->resetPosition(); }
 
@@ -30,11 +36,20 @@ void Obstacle::loopTowardsViewer()
 
 void Obstacle::resetPosition()
 {
+    // Get random row index
     int randomRowIndex = GetRandomValue(0, ROW_POSITIONS.size() - 1);
+
+    // Get random row
     float randomRow = ROW_POSITIONS[randomRowIndex];
+
+    // Get a random column, which is forward or backward, the z-axis
     auto randomColumn =
         static_cast<float>(GetRandomValue(MIN_START_POS, MAX_START_POS));
+
+    // Combine both positions
     Vector3 startingPosition = {randomRow, 0.0F, randomColumn};
+
+    // Set random position
     this->position = startingPosition;
 }
 
