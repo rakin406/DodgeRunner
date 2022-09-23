@@ -3,29 +3,52 @@
 
 #include "raylib.h"
 
-// This class contains all the functions of a single obstacle
+/**
+ * @brief This class contains all the functions of a single obstacle.
+ */
 class Obstacle
 {
 public:
+    /**
+     * @brief Default constructor for Obstacle initialization.
+     */
     Obstacle();
 
-    // Get obstacle position
+    /**
+     * @brief Get obstacle position.
+     *
+     * @return Vector3.
+     */
     [[nodiscard]] Vector3 getPosition() const;
 
-    // Get obstacle speed
+    /**
+     * @brief Get obstacle speed.
+     *
+     * @return float.
+     */
     [[nodiscard]] float getSpeed() const;
 
-    // Set obstacle speed
+    /**
+     * @brief Set obstacle speed.
+     *
+     * @param speed.
+     */
     void setSpeed(float speed);
 
-    // Move obstacle towards viewer and reset position to starting point when
-    // obstacle reaches screen height.
+    /**
+     * @brief Move obstacle towards viewer and reset position to starting point
+     * when obstacle reaches screen height.
+     */
     void loopTowardsViewer();
 
-    // Reset obstacle position to starting point
+    /**
+     * @brief Reset obstacle position to starting point.
+     */
     void resetPosition();
 
-    // Draw obstacle on screen
+    /**
+     * @brief Draw obstacle on screen.
+     */
     void draw() const;
 
 private:

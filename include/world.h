@@ -7,11 +7,20 @@
 #include "obstacle.h"
 #include "player.h"
 
-// This class contains the main functions of the game
+/**
+ * @brief This class contains the main functions of the game.
+ */
 class World
 {
 public:
+    /**
+     * @brief Default constructor for World initialization.
+     */
     World();
+
+    /**
+     * @brief Play and draw the world.
+     */
     void play();
 
 private:

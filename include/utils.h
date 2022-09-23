@@ -8,21 +8,24 @@
 
 namespace utils::world
 {
-// Draw ground on screen
+/**
+ * @brief Draw ground on screen.
+ */
 void drawGround();
 
 /**
- * View score on screen.
+ * @brief View score on screen.
  *
  * @param score Player score.
  */
 void viewScore(int score);
 
 /**
- * Return true if player cube collides with obstacle.
+ * @brief Return true if player cube collides with obstacle.
  *
  * @param player Player cube.
  * @param obstacle Obstacle.
+ *
  * @return boolean.
  */
 bool checkCollision(const Player &player, const Obstacle &obstacle);

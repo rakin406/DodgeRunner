@@ -3,30 +3,43 @@
 
 #include "raylib.h"
 
-// All possible directions for player cube
+/**
+ * @brief All possible directions for player cube.
+ */
 enum class Direction
 {
     Left,
     Right
 };
 
-// This class contains all the functions of the player cube
+/**
+ * @brief This class contains all the functions of the player cube.
+ */
 class Player
 {
 public:
+    /**
+     * @brief Default constructor for Player initialization.
+     */
     Player();
 
-    // Get player position
+    /**
+     * @brief Get player position.
+     *
+     * @return Vector3.
+     */
     [[nodiscard]] Vector3 getPosition() const;
 
     /**
-     * Move player cube to specified direction.
+     * @brief Move player cube to specified direction.
      *
      * @param direction Desired direction for player cube.
      */
     void move(Direction direction);
 
-    // Draw player cube on screen
+    /**
+     * @brief Draw player cube on screen.
+     */
     void draw() const;
 
 private:
