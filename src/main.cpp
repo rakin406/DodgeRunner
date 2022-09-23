@@ -1,7 +1,11 @@
 #include "raylib.h"
 
-#include "../include/constants.h"
 #include "../include/world.h"
+
+// Screen constants
+constexpr char SCREEN_TITLE[] = "Dodge Runner";
+constexpr int SCREEN_WIDTH = 1000;
+constexpr int SCREEN_HEIGHT = 750;
 
 int main()
 {
@@ -11,14 +15,17 @@ int main()
     // Initialize world
     World world;
 
-    // Set FPS
     SetTargetFPS(60);
 
     // Main game loop
-    while (!WindowShouldClose())
+    while (!WindowShouldClose()) // Detect window close button or ESC key
     {
+        // Start world
         world.play();
     }
+
+    // De-Initialization
+    CloseWindow();
 
     return 0;
 }
