@@ -2,7 +2,6 @@
 #include <vector>
 
 #include "../include/constants.h"
-#include "../include/menu.h"
 #include "../include/utils.h"
 #include "../include/world.h"
 
@@ -22,7 +21,7 @@ constexpr Vector3 POSITION = {0.0F, 5.0F, 10.0F};
 constexpr float FOV = 45.0F;
 } // namespace camera
 
-World::World()
+World::World() : obstacles({})
 {
     // Set a custom random seed for random number generation.
     // Needed for random obstacle position.
@@ -37,51 +36,49 @@ World::World()
     this->camera.fovy = camera::FOV;              // Camera field-of-view Y
     this->camera.projection = CAMERA_PERSPECTIVE; // Camera mode type
 
-    // Initialize values
-    this->reset();
+    // Re-initialize obstacles
+    for (int i = 0; i < DEFAULT_OBSTACLES; ++i)
+    {
+        Obstacle obs;
+        this->obstacles.push_back(obs);
+    }
 }
-
-bool World::isStarted() const { return this->started; }
 
 void World::draw()
 {
-    // Don't draw if game is paused
-    if (this->started && !this->isPaused)
+    BeginDrawing();
+
+    // Clear background
+    ClearBackground(RAYWHITE);
+
+    // View score at top left
+    utils::world::viewScore(this->score);
+
+    // Start viewing in 3D
+    BeginMode3D(this->camera);
+
+    // Draw the ground/floor
+    utils::world::drawGround();
+
+    // Draw player cube
+    this->player.draw();
+
+    // Draw obstacle cubes
+    for (auto &elem : this->obstacles)
     {
-        BeginDrawing();
-
-        // Clear background
-        ClearBackground(RAYWHITE);
-
-        // View score at top left
-        utils::world::viewScore(this->score);
-
-        // Start viewing in 3D
-        BeginMode3D(this->camera);
-
-        // Draw the ground/floor
-        utils::world::drawGround();
-
-        // Draw player cube
-        this->player.draw();
-
-        // Draw obstacle cubes
-        for (auto &elem : this->obstacles)
-        {
-            elem.draw();
-        }
-
-        EndMode3D();
-
-        EndDrawing();
+        elem.draw();
     }
+
+    EndMode3D();
+
+    EndDrawing();
 }
 
 void World::play()
 {
     // TODO: Make this code branch shorter and refactor it
-    // Stop movement if collision occurs or if game is paused
-    if (this->started && !this->isCollided && !this->isPaused)
+    // Stop movement if game is over
+    if (!this->gameOver)
     {
         // Player movement
         if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A))
@@ -108,7 +105,7 @@ void World::play()
             // Stop game if player and obstacle collides
             if (utils::world::checkCollision(player, elem))
             {
-                this->isCollided = true;
+                this->gameOver = true;
             }
         }
 
@@ -117,25 +114,4 @@ void World::play()
 
     // Finally draw the world
     this->draw();
-}
-
-void World::start() { this->started = true; }
-
-void World::pause() { this->isPaused = true; }
-
-void World::resume() { this->isPaused = false; }
-
-void World::reset()
-{
-    this->obstacles = {};     // Empty obstacles
-    this->isCollided = false; // Reset collision
-    this->isPaused = false;   // Stop pause
-    this->score = 0;          // Reset score
-
-    // Re-initialize obstacles
-    for (int i = 0; i < DEFAULT_OBSTACLES; ++i)
-    {
-        Obstacle obs;
-        this->obstacles.push_back(obs);
-    }
 }
