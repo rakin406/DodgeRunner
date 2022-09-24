@@ -2,10 +2,13 @@
 
 #include "../include/world.h"
 
+namespace
+{
 // Screen constants
 constexpr char SCREEN_TITLE[] = "Dodge Runner";
 constexpr int SCREEN_WIDTH = 1000;
 constexpr int SCREEN_HEIGHT = 750;
+} // namespace
 
 int main()
 {

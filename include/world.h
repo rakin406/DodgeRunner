@@ -19,7 +19,7 @@ public:
     World();
 
     /**
-     * @brief Play and draw the world.
+     * @brief Play the world.
      */
     void play();
 
@@ -30,6 +30,44 @@ private:
     bool gameOver = false;             // Boolean for checking pause
     int score = 0;                     // Player score
 
+    /**
+     * @brief Initialize 3D camera.
+     */
+    void initializeCamera();
+
+    /**
+     * @brief Initialize obstacle cubes.
+     */
+    void initializeObstacles();
+
+    /**
+     * @brief Detect key and move player according to direction.
+     */
+    void handlePlayerMovement();
+
+    /**
+     * @brief Update and move obstacles.
+     */
+    void updateObstacles();
+
+    /**
+     * @brief View score on screen.
+     */
+    void viewScore() const;
+
+    /**
+     * @brief Draw ground/floor.
+     */
+    void drawGround();
+
+    /**
+     * @brief Draw obstacle cubes.
+     */
+    void drawObstacles();
+
+    /**
+     * @brief Draw the whole world.
+     */
     void draw();
 };
 
