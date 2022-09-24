@@ -27,8 +27,8 @@ private:
     Camera3D camera{};                 // Initialize camera
     Player player{};                   // Initialize cube as player
     std::vector<Obstacle> obstacles{}; // Initialize obstacles
-    bool gameOver = false;             // Boolean for ending game
-    int score = 0;                     // Player score
+    bool gameOver{};                   // Boolean for ending game
+    int score{};                       // Player score
 
     /**
      * @brief Initialize 3D camera.
