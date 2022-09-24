@@ -9,6 +9,9 @@ constexpr int SCREEN_HEIGHT = 750;
 
 int main()
 {
+    // Set window settings
+    SetConfigFlags(FLAG_VSYNC_HINT | FLAG_MSAA_4X_HINT);
+
     // Initialize window
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE);
 
