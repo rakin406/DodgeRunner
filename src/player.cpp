@@ -15,7 +15,7 @@ Vector3 Player::getPosition() const { return this->position; }
 void Player::move(Direction direction)
 {
     Vector3 newPosition = this->position;
-    int row = this->currentRow;
+    int row = this->currentRow; // Get current row of player
     float distance = CUBE_SIZE + GROUND_GAP / 2;
 
     // Check direction and don't go beyond row boundary
@@ -34,6 +34,7 @@ void Player::move(Direction direction)
         this->currentRow = row + 1;
     }
 
+    // Set player position
     this->position = newPosition;
 }
 
