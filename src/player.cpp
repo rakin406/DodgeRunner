@@ -1,22 +1,25 @@
 #include "../include/player.h"
 #include "../include/constants.h"
 
-constexpr int LEFT_ROW = 1;
-constexpr int MIDDLE_ROW = 2;
-constexpr int RIGHT_ROW = 3;
+namespace
+{
+constexpr int LEFT_ROW { 1 };
+constexpr int MIDDLE_ROW { 2 };
+constexpr int RIGHT_ROW { 3 };
+} // namespace
 
 Player::Player() : currentRow(MIDDLE_ROW)
 {
-    this->position = {0.0F, 0.0F, 0.0F};
+    this->position = { 0.0F, 0.0F, 0.0F };
 }
 
 Vector3 Player::getPosition() const { return this->position; }
 
 void Player::move(Direction direction)
 {
-    Vector3 newPosition = this->position;
-    int row = this->currentRow; // Get current row of player
-    float distance = CUBE_SIZE + GROUND_GAP / 2;
+    Vector3 newPosition { this->position };
+    int row { this->currentRow }; // Get current row of player
+    float distance { CUBE_SIZE + GROUND_GAP / 2 };
 
     // Check direction and don't go beyond row boundary
     if (direction == Direction::Left && row > LEFT_ROW)
