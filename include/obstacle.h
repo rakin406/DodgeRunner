@@ -1,7 +1,7 @@
 #ifndef OBSTACLE_H
 #define OBSTACLE_H
 
-#include "raylib.h"
+#include <raylib.h>
 
 /**
  * @brief This class contains all the functions of a single obstacle.

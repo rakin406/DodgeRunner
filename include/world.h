@@ -1,7 +1,7 @@
 #ifndef WORLD_H
 #define WORLD_H
 
-#include "raylib.h"
+#include <raylib.h>
 #include <vector>
 
 #include "obstacle.h"

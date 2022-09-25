@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "raylib.h"
+#include <raylib.h>
 
 /**
  * @brief All possible directions for player cube.
