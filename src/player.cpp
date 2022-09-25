@@ -25,16 +25,12 @@ void Player::move(Direction direction)
     if (direction == Direction::Left && row > LEFT_ROW)
     {
         newPosition.x -= distance;
-
-        // Shift row to left
-        this->currentRow = row - 1;
+        this->currentRow = row - 1; // Shift row to left
     }
     else if (direction == Direction::Right && row < RIGHT_ROW)
     {
         newPosition.x += distance;
-
-        // Shift row to right
-        this->currentRow = row + 1;
+        this->currentRow = row + 1; // Shift row to right
     }
 
     // Set player position

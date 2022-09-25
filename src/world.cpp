@@ -85,13 +85,18 @@ void World::initializeCamera()
 {
     // Define the camera to look into our 3d world
     this->camera.position = camera::POSITION;
-    this->camera.target =
-        (Vector3) { 0.0F, 1.0F, 0.0F }; // Camera looking at point
-    this->camera.up =
-        (Vector3) { 0.0F, 1.0F,
-                    0.0F }; // Camera up vector (rotation towards target)
-    this->camera.fovy = camera::FOV;              // Camera field-of-view Y
-    this->camera.projection = CAMERA_PERSPECTIVE; // Camera mode type
+
+    // Camera looking at point
+    this->camera.target = (Vector3) { 0.0F, 1.0F, 0.0F };
+
+    // Camera up vector (rotation towards target)
+    this->camera.up = (Vector3) { 0.0F, 1.0F, 0.0F };
+
+    // Camera field-of-view Y
+    this->camera.fovy = camera::FOV;
+
+    // Camera mode type
+    this->camera.projection = CAMERA_PERSPECTIVE;
 }
 
 void World::initializeObstacles()
