@@ -24,9 +24,9 @@ target_include_directories(${PROJECT_NAME} PRIVATE include)
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
 
 if (MSVC)
-    # Warning level 4
-    add_compile_options(/W4)
+    # Warning level 4 and warnings as errors
+    add_compile_options(/W4 /Wx)
 else()
-    # Lots of warnings
-    add_compile_options(-Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic)
+    # Lots of warnings and warnings as errors
+    add_compile_options(-Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic -Werror)
 endif()
