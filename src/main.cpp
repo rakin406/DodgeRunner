@@ -1,11 +1,12 @@
 #include <raylib.h>
+#include <string_view>
 
 #include "../include/world.h"
 
 namespace
 {
 // Screen constants
-constexpr char SCREEN_TITLE[] = "Dodge Runner";
+constexpr std::string_view SCREEN_TITLE = "Dodge Runner";
 constexpr int SCREEN_WIDTH = 1000;
 constexpr int SCREEN_HEIGHT = 750;
 } // namespace
@@ -16,7 +17,7 @@ int main()
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_MSAA_4X_HINT);
 
     // Initialize window
-    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE);
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE.data());
 
     // Initialize world
     World world;
