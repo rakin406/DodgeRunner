@@ -1,8 +1,9 @@
-#include <raylib.h>
-#include <vector>
-
-#include "../include/constants.h"
 #include "../include/world.h"
+#include "../include/constants.h"
+
+#include <raylib.h>
+
+#include <vector>
 
 namespace
 {

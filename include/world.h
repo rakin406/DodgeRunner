@@ -1,11 +1,12 @@
 #ifndef WORLD_H
 #define WORLD_H
 
-#include <raylib.h>
-#include <vector>
-
 #include "obstacle.h"
 #include "player.h"
+
+#include <raylib.h>
+
+#include <vector>
 
 /**
  * @brief This class contains the main functions of the game.
@@ -24,11 +25,11 @@ public:
     void play();
 
 private:
-    Camera3D camera{};                 // Initialize camera
-    Player player{};                   // Initialize cube as player
-    std::vector<Obstacle> obstacles{}; // Initialize obstacles
-    bool gameOver{};                   // Boolean for ending game
-    int score{};                       // Player score
+    Camera3D camera {};                 // Initialize camera
+    Player player {};                   // Initialize cube as player
+    std::vector<Obstacle> obstacles {}; // Initialize obstacles
+    bool gameOver {};                   // Boolean for ending game
+    int score {};                       // Player score
 
     /**
      * @brief Initialize 3D camera.

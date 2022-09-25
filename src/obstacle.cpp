@@ -1,7 +1,7 @@
-#include <array>
-
-#include "../include/constants.h"
 #include "../include/obstacle.h"
+#include "../include/constants.h"
+
+#include <array>
 
 namespace
 {
