@@ -5,7 +5,6 @@
 #include "player.h"
 
 #include <raylib.h>
-
 #include <vector>
 
 /**

@@ -1,7 +1,6 @@
 #include "../include/world.h"
 
 #include <raylib.h>
-
 #include <string_view>
 
 namespace

@@ -2,7 +2,6 @@
 #include "../include/constants.h"
 
 #include <raylib.h>
-
 #include <vector>
 
 namespace
