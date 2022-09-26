@@ -28,23 +28,24 @@ constexpr float SPEED_INCREMENT { 0.5F };
  */
 bool checkCollision(const Player &player, const Obstacle &obstacle)
 {
+    using constants::CUBE_SIZE;
+
     Vector3 playerPos { player.getPosition() };
     Vector3 obstaclePos { obstacle.getPosition() };
 
     return CheckCollisionBoxes(
-        (BoundingBox) { (Vector3) { playerPos.x - constants::CUBE_SIZE / 2,
-                                    playerPos.y - constants::CUBE_SIZE / 2,
-                                    playerPos.z - constants::CUBE_SIZE / 2 },
-                        (Vector3) { playerPos.x + constants::CUBE_SIZE / 2,
-                                    playerPos.y + constants::CUBE_SIZE / 2,
-                                    playerPos.z + constants::CUBE_SIZE / 2 } },
-        (BoundingBox) {
-            (Vector3) { obstaclePos.x - constants::CUBE_SIZE / 2,
-                        obstaclePos.y - constants::CUBE_SIZE / 2,
-                        obstaclePos.z - constants::CUBE_SIZE / 2 },
-            (Vector3) { obstaclePos.x + constants::CUBE_SIZE / 2,
-                        obstaclePos.y + constants::CUBE_SIZE / 2,
-                        obstaclePos.z + constants::CUBE_SIZE / 2 } });
+        (BoundingBox) { (Vector3) { playerPos.x - CUBE_SIZE / 2,
+                                    playerPos.y - CUBE_SIZE / 2,
+                                    playerPos.z - CUBE_SIZE / 2 },
+                        (Vector3) { playerPos.x + CUBE_SIZE / 2,
+                                    playerPos.y + CUBE_SIZE / 2,
+                                    playerPos.z + CUBE_SIZE / 2 } },
+        (BoundingBox) { (Vector3) { obstaclePos.x - CUBE_SIZE / 2,
+                                    obstaclePos.y - CUBE_SIZE / 2,
+                                    obstaclePos.z - CUBE_SIZE / 2 },
+                        (Vector3) { obstaclePos.x + CUBE_SIZE / 2,
+                                    obstaclePos.y + CUBE_SIZE / 2,
+                                    obstaclePos.z + CUBE_SIZE / 2 } });
 }
 
 namespace camera

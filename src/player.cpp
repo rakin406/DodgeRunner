@@ -41,8 +41,8 @@ void Player::move(Direction direction)
 
 void Player::draw() const
 {
-    DrawCube(m_position, constants::CUBE_SIZE, constants::CUBE_SIZE,
-             constants::CUBE_SIZE, BLUE);
-    DrawCubeWires(m_position, constants::CUBE_SIZE, constants::CUBE_SIZE,
-                  constants::CUBE_SIZE, BLACK);
+    using constants::CUBE_SIZE;
+
+    DrawCube(m_position, CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, BLUE);
+    DrawCubeWires(m_position, CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, BLACK);
 }
