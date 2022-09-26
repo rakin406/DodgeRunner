@@ -52,8 +52,8 @@ public:
     void draw() const;
 
 private:
-    Vector3 position{}; // Obstacle position
-    float speed{};      // Obstacle movement speed
+    Vector3 m_position {}; // Obstacle position
+    float m_speed {};      // Obstacle movement speed
 };
 
 #endif

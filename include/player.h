@@ -43,8 +43,8 @@ public:
     void draw() const;
 
 private:
-    Vector3 position {}; // Player cube position
-    int currentRow {};   // Current ground row of player cube
+    Vector3 m_position {}; // Player cube position
+    int m_currentRow {};   // Current ground row of player cube
 };
 
 #endif

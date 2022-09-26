@@ -5,36 +5,36 @@
 
 namespace
 {
-constexpr int kMinStartPos { -800 };
-constexpr int kMaxStartPos { -200 };
-constexpr float kDefaultSpeed { 1.0F };
+constexpr int MIN_START_POS { -800 };
+constexpr int MAX_START_POS { -200 };
+constexpr float DEFAULT_SPEED { 1.0F };
 
 // The middle row position is 0.0F
-constexpr std::array<float, 3> kRowPositions { -kCubeSize - kGroundGap / 2,
+constexpr std::array<float, 3> ROW_POSITIONS { -g_CUBE_SIZE - g_GROUND_GAP / 2,
                                                0.0F,
-                                               kCubeSize + kGroundGap / 2 };
+                                               g_CUBE_SIZE + g_GROUND_GAP / 2 };
 } // namespace
 
-Obstacle::Obstacle() : speed(kDefaultSpeed) { this->resetPosition(); }
+Obstacle::Obstacle() : m_speed(DEFAULT_SPEED) { this->resetPosition(); }
 
-Vector3 Obstacle::getPosition() const { return this->position; }
+Vector3 Obstacle::getPosition() const { return m_position; }
 
-float Obstacle::getSpeed() const { return this->speed; }
+float Obstacle::getSpeed() const { return m_speed; }
 
-void Obstacle::setSpeed(float speed) { this->speed = speed; }
+void Obstacle::setSpeed(float speed) { m_speed = speed; }
 
 void Obstacle::loopTowardsViewer()
 {
     {
-        Vector3 newPosition { this->position };
-        newPosition.z += this->speed;
-        this->position = newPosition;
+        Vector3 newPosition { m_position };
+        newPosition.z += m_speed;
+        m_position = newPosition;
     }
 
     // TODO: Refactor this code to ACTUALLY reach screen height and NOT count on
     // cube size.
     // Reset position if obstacle reaches screen height
-    if (this->position.z >= kCubeSize * 2)
+    if (m_position.z >= g_CUBE_SIZE * 2)
     {
         this->resetPosition();
     }
@@ -46,25 +46,25 @@ void Obstacle::resetPosition()
 
     {
         // Get random row index
-        int randomRowIndex { GetRandomValue(0, kRowPositions.size() - 1) };
+        int randomRowIndex { GetRandomValue(0, ROW_POSITIONS.size() - 1) };
 
         // Get random row
-        float randomRow { kRowPositions[randomRowIndex] };
+        float randomRow { ROW_POSITIONS[randomRowIndex] };
 
         // Get a random column, which is forward or backward, the z-axis
         auto randomColumn { static_cast<float>(
-            GetRandomValue(kMinStartPos, kMaxStartPos)) };
+            GetRandomValue(MIN_START_POS, MAX_START_POS)) };
 
         // Combine both positions
         startingPosition = { randomRow, 0.0F, randomColumn };
     }
 
     // Set random position
-    this->position = startingPosition;
+    m_position = startingPosition;
 }
 
 void Obstacle::draw() const
 {
-    DrawCube(this->position, kCubeSize, kCubeSize, kCubeSize, RED);
-    DrawCubeWires(this->position, kCubeSize, kCubeSize, kCubeSize, BLACK);
+    DrawCube(m_position, g_CUBE_SIZE, g_CUBE_SIZE, g_CUBE_SIZE, RED);
+    DrawCubeWires(m_position, g_CUBE_SIZE, g_CUBE_SIZE, g_CUBE_SIZE, BLACK);
 }

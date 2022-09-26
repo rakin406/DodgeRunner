@@ -7,9 +7,9 @@
 namespace
 {
 // Screen constants
-constexpr std::string_view kScreenTitle { "Dodge Runner" };
-constexpr int kScreenWidth { 1000 };
-constexpr int kScreenHeight { 750 };
+constexpr std::string_view SCREEN_TITLE { "Dodge Runner" };
+constexpr int SCREEN_WIDTH { 1000 };
+constexpr int SCREEN_HEIGHT { 750 };
 } // namespace
 
 int main()
@@ -18,7 +18,7 @@ int main()
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_MSAA_4X_HINT);
 
     // Initialize window
-    InitWindow(kScreenWidth, kScreenHeight, kScreenTitle.data());
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE.data());
 
     // Initialize world
     World world;
