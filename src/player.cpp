@@ -15,11 +15,13 @@ Player::Player() : m_currentRow(MIDDLE_ROW)
 
 Vector3 Player::getPosition() const { return m_position; }
 
-void Player::move(Direction direction)
+void Player::move(direction::Direction direction)
 {
     Vector3 newPosition { m_position };
 
     {
+        using direction::Direction;
+
         int row { m_currentRow }; // Get current row of player
         float distance { constants::CUBE_SIZE + constants::GROUND_GAP / 2 };
 

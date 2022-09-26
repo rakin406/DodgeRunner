@@ -3,6 +3,9 @@
 
 #include <raylib.h>
 
+namespace direction
+{
+
 /**
  * @brief All possible directions for player cube.
  */
@@ -11,6 +14,8 @@ enum class Direction
     left,
     right
 };
+
+} // namespace direction
 
 /**
  * @brief This class contains all the functions of the player cube.
@@ -35,7 +40,7 @@ public:
      *
      * @param direction Desired direction for player cube.
      */
-    void move(Direction direction);
+    void move(direction::Direction direction);
 
     /**
      * @brief Draw player cube on screen.
