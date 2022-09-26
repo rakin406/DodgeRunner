@@ -18,19 +18,22 @@ Vector3 Player::getPosition() const { return this->position; }
 void Player::move(Direction direction)
 {
     Vector3 newPosition { this->position };
-    int row { this->currentRow }; // Get current row of player
-    float distance { kCubeSize + kGroundGap / 2 };
 
-    // Check direction and don't go beyond row boundary
-    if (direction == Direction::Left && row > kLeftRow)
     {
-        newPosition.x -= distance;
-        this->currentRow = row - 1; // Shift row to left
-    }
-    else if (direction == Direction::Right && row < kRightRow)
-    {
-        newPosition.x += distance;
-        this->currentRow = row + 1; // Shift row to right
+        int row { this->currentRow }; // Get current row of player
+        float distance { kCubeSize + kGroundGap / 2 };
+
+        // Check direction and don't go beyond row boundary
+        if (direction == Direction::Left && row > kLeftRow)
+        {
+            newPosition.x -= distance;
+            this->currentRow = row - 1; // Shift row to left
+        }
+        else if (direction == Direction::Right && row < kRightRow)
+        {
+            newPosition.x += distance;
+            this->currentRow = row + 1; // Shift row to right
+        }
     }
 
     // Set player position

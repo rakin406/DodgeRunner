@@ -25,9 +25,11 @@ void Obstacle::setSpeed(float speed) { this->speed = speed; }
 
 void Obstacle::loopTowardsViewer()
 {
-    Vector3 newPosition { this->position };
-    newPosition.z += this->speed;
-    this->position = newPosition;
+    {
+        Vector3 newPosition { this->position };
+        newPosition.z += this->speed;
+        this->position = newPosition;
+    }
 
     // TODO: Refactor this code to ACTUALLY reach screen height and NOT count on
     // cube size.
@@ -40,18 +42,22 @@ void Obstacle::loopTowardsViewer()
 
 void Obstacle::resetPosition()
 {
-    // Get random row index
-    int randomRowIndex { GetRandomValue(0, kRowPositions.size() - 1) };
+    Vector3 startingPosition {};
 
-    // Get random row
-    float randomRow { kRowPositions[randomRowIndex] };
+    {
+        // Get random row index
+        int randomRowIndex { GetRandomValue(0, kRowPositions.size() - 1) };
 
-    // Get a random column, which is forward or backward, the z-axis
-    auto randomColumn { static_cast<float>(
-        GetRandomValue(kMinStartPos, kMaxStartPos)) };
+        // Get random row
+        float randomRow { kRowPositions[randomRowIndex] };
 
-    // Combine both positions
-    Vector3 startingPosition { randomRow, 0.0F, randomColumn };
+        // Get a random column, which is forward or backward, the z-axis
+        auto randomColumn { static_cast<float>(
+            GetRandomValue(kMinStartPos, kMaxStartPos)) };
+
+        // Combine both positions
+        startingPosition = { randomRow, 0.0F, randomColumn };
+    }
 
     // Set random position
     this->position = startingPosition;
