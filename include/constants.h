@@ -1,9 +1,9 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-constexpr float CUBE_SIZE { 2.0F };
-constexpr int FONT_SIZE { 30 };
+constexpr float kCubeSize { 2.0F };
+constexpr int kFontSize { 30 };
 
-constexpr float GROUND_GAP { CUBE_SIZE / 2 };
+constexpr float kGroundGap { kCubeSize / 2 };
 
 #endif

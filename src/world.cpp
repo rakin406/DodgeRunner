@@ -8,15 +8,15 @@
 namespace
 {
 
-constexpr int MAX_OBSTACLES { 10 };
+constexpr int kMaxObstacles { 10 };
 
 // NOTE: It doesn't increment... This is used for division and the reminder is
 // used for increasing speed. I just need a better name for this variable...
 // After the specified score, increase the obstacle speed.
-constexpr int SCORE_INCREMENT { 5000 };
+constexpr int kScoreIncrement { 5000 };
 
 // Used for incrementing to the original speed
-constexpr float SPEED_INCREMENT { 0.5F };
+constexpr float kSpeedIncrement { 0.5F };
 
 /**
  * @brief Return true if player cube collides with obstacle.
@@ -34,18 +34,18 @@ bool checkCollision(const Player &player, const Obstacle &obstacle)
     Vector3 obstaclePos { obstacle.getPosition() };
 
     return CheckCollisionBoxes(
-        (BoundingBox) { (Vector3) { playerPos.x - CUBE_SIZE / 2,
-                                    playerPos.y - CUBE_SIZE / 2,
-                                    playerPos.z - CUBE_SIZE / 2 },
-                        (Vector3) { playerPos.x + CUBE_SIZE / 2,
-                                    playerPos.y + CUBE_SIZE / 2,
-                                    playerPos.z + CUBE_SIZE / 2 } },
-        (BoundingBox) { (Vector3) { obstaclePos.x - CUBE_SIZE / 2,
-                                    obstaclePos.y - CUBE_SIZE / 2,
-                                    obstaclePos.z - CUBE_SIZE / 2 },
-                        (Vector3) { obstaclePos.x + CUBE_SIZE / 2,
-                                    obstaclePos.y + CUBE_SIZE / 2,
-                                    obstaclePos.z + CUBE_SIZE / 2 } });
+        (BoundingBox) { (Vector3) { playerPos.x - kCubeSize / 2,
+                                    playerPos.y - kCubeSize / 2,
+                                    playerPos.z - kCubeSize / 2 },
+                        (Vector3) { playerPos.x + kCubeSize / 2,
+                                    playerPos.y + kCubeSize / 2,
+                                    playerPos.z + kCubeSize / 2 } },
+        (BoundingBox) { (Vector3) { obstaclePos.x - kCubeSize / 2,
+                                    obstaclePos.y - kCubeSize / 2,
+                                    obstaclePos.z - kCubeSize / 2 },
+                        (Vector3) { obstaclePos.x + kCubeSize / 2,
+                                    obstaclePos.y + kCubeSize / 2,
+                                    obstaclePos.z + kCubeSize / 2 } });
 }
 
 namespace camera
@@ -102,7 +102,7 @@ void World::initializeCamera()
 
 void World::initializeObstacles()
 {
-    for (int i = 0; i < MAX_OBSTACLES; ++i)
+    for (int i = 0; i < kMaxObstacles; ++i)
     {
         Obstacle obs;
         this->obstacles.push_back(obs);
@@ -132,9 +132,9 @@ void World::updateObstacles()
         elem.loopTowardsViewer();
 
         // Increase speed of obstacles according to score
-        if (this->score % SCORE_INCREMENT == 0)
+        if (this->score % kScoreIncrement == 0)
         {
-            elem.setSpeed(elem.getSpeed() + SPEED_INCREMENT);
+            elem.setSpeed(elem.getSpeed() + kSpeedIncrement);
         }
 
         // Stop game if player and obstacle collides
@@ -147,14 +147,14 @@ void World::updateObstacles()
 
 void World::viewScore() const
 {
-    DrawText(TextFormat("Score: %i", this->score), 15, 15, FONT_SIZE, BLACK);
+    DrawText(TextFormat("Score: %i", this->score), 15, 15, kFontSize, BLACK);
 }
 
 void World::drawGround()
 {
-    float groundWidth { (CUBE_SIZE * 3.5F) + GROUND_GAP };
+    float groundWidth { (kCubeSize * 3.5F) + kGroundGap };
     Vector2 groundSize { groundWidth, static_cast<float>(GetScreenHeight()) };
-    DrawPlane((Vector3) { 0.0F, -CUBE_SIZE, 0.0F }, groundSize, LIGHTGRAY);
+    DrawPlane((Vector3) { 0.0F, -kCubeSize, 0.0F }, groundSize, LIGHTGRAY);
 }
 
 void World::drawObstacles()
