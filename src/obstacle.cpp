@@ -5,12 +5,12 @@
 
 namespace
 {
-constexpr int MIN_START_POS { -800 };
-constexpr int MAX_START_POS { -200 };
-constexpr float DEFAULT_SPEED { 1.0F };
+constexpr int MIN_START_POS{ -800 };
+constexpr int MAX_START_POS{ -200 };
+constexpr float DEFAULT_SPEED{ 1.0F };
 
 // The middle row position is 0.0F
-constexpr std::array<float, 3> ROW_POSITIONS {
+constexpr std::array<float, 3> ROW_POSITIONS{
     -constants::CUBE_SIZE - constants::GROUND_GAP / 2, 0.0F,
     constants::CUBE_SIZE + constants::GROUND_GAP / 2
 };
@@ -27,7 +27,7 @@ void Obstacle::setSpeed(float speed) { m_speed = speed; }
 void Obstacle::loopTowardsViewer()
 {
     {
-        Vector3 newPosition { m_position };
+        Vector3 newPosition{ m_position };
         newPosition.z += m_speed;
         m_position = newPosition;
     }
@@ -43,12 +43,12 @@ void Obstacle::loopTowardsViewer()
 
 void Obstacle::resetPosition()
 {
-    Vector3 startingPosition {};
+    Vector3 startingPosition{};
 
     {
-        int randomRowIndex { GetRandomValue(0, ROW_POSITIONS.size() - 1) };
-        float randomRow { ROW_POSITIONS[randomRowIndex] };
-        auto randomColumn { static_cast<float>(
+        int randomRowIndex{ GetRandomValue(0, ROW_POSITIONS.size() - 1) };
+        float randomRow{ ROW_POSITIONS[randomRowIndex] };
+        auto randomColumn{ static_cast<float>(
             GetRandomValue(MIN_START_POS, MAX_START_POS)) };
         startingPosition = { randomRow, 0.0F, randomColumn };
     }

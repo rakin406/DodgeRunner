@@ -24,11 +24,11 @@ public:
     void play();
 
 private:
-    Camera3D m_camera {};                 // Initialize camera
-    Player m_player {};                   // Initialize cube as player
-    std::vector<Obstacle> m_obstacles {}; // Initialize obstacles
-    bool m_gameOver {};                   // Boolean for ending game
-    int m_score {};                       // Player score
+    Camera3D m_camera{};                 // Initialize camera
+    Player m_player{};                   // Initialize cube as player
+    std::vector<Obstacle> m_obstacles{}; // Initialize obstacles
+    bool m_gameOver{};                   // Boolean for ending game
+    int m_score{};                       // Player score
 
     /**
      * @brief Initialize 3D camera.

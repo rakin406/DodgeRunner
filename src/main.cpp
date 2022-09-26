@@ -6,9 +6,9 @@
 namespace
 {
 // Screen constants
-constexpr std::string_view SCREEN_TITLE { "Dodge Runner" };
-constexpr int SCREEN_WIDTH { 1000 };
-constexpr int SCREEN_HEIGHT { 750 };
+constexpr std::string_view SCREEN_TITLE{ "Dodge Runner" };
+constexpr int SCREEN_WIDTH{ 1000 };
+constexpr int SCREEN_HEIGHT{ 750 };
 } // namespace
 
 int main()

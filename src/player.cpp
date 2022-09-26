@@ -3,9 +3,9 @@
 
 namespace
 {
-constexpr int LEFT_ROW { 1 };
-constexpr int MIDDLE_ROW { 2 };
-constexpr int RIGHT_ROW { 3 };
+constexpr int LEFT_ROW{ 1 };
+constexpr int MIDDLE_ROW{ 2 };
+constexpr int RIGHT_ROW{ 3 };
 } // namespace
 
 Player::Player() : m_currentRow(MIDDLE_ROW)
@@ -17,13 +17,13 @@ Vector3 Player::getPosition() const { return m_position; }
 
 void Player::move(Direction direction)
 {
-    Vector3 newPosition { m_position };
+    Vector3 newPosition{ m_position };
 
     {
         using enum Direction;
 
-        int row { m_currentRow }; // Get current row of player
-        float distance { constants::CUBE_SIZE + constants::GROUND_GAP / 2 };
+        int row{ m_currentRow }; // Get current row of player
+        float distance{ constants::CUBE_SIZE + constants::GROUND_GAP / 2 };
 
         // Check direction and don't go beyond row boundary
         if (direction == left && row > LEFT_ROW)

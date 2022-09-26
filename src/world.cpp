@@ -7,15 +7,15 @@
 namespace
 {
 
-constexpr int MAX_OBSTACLES { 10 };
+constexpr int MAX_OBSTACLES{ 10 };
 
 // NOTE: It doesn't increment... This is used for division and the reminder is
 // used for increasing speed. I just need a better name for this variable...
 // After the specified score, increase the obstacle speed.
-constexpr int SCORE_INCREMENT { 5000 };
+constexpr int SCORE_INCREMENT{ 5000 };
 
 // Used for incrementing to the original speed
-constexpr float SPEED_INCREMENT { 0.5F };
+constexpr float SPEED_INCREMENT{ 0.5F };
 
 /**
  * @brief Return true if player cube collides with obstacle.
@@ -29,28 +29,27 @@ bool checkCollision(const Player& player, const Obstacle& obstacle)
 {
     using constants::CUBE_SIZE;
 
-    Vector3 playerPos { player.getPosition() };
-    Vector3 obstaclePos { obstacle.getPosition() };
+    Vector3 playerPos{ player.getPosition() };
+    Vector3 obstaclePos{ obstacle.getPosition() };
 
     return CheckCollisionBoxes(
-        (BoundingBox) { (Vector3) { playerPos.x - CUBE_SIZE / 2,
-                                    playerPos.y - CUBE_SIZE / 2,
-                                    playerPos.z - CUBE_SIZE / 2 },
-                        (Vector3) { playerPos.x + CUBE_SIZE / 2,
-                                    playerPos.y + CUBE_SIZE / 2,
-                                    playerPos.z + CUBE_SIZE / 2 } },
-        (BoundingBox) { (Vector3) { obstaclePos.x - CUBE_SIZE / 2,
-                                    obstaclePos.y - CUBE_SIZE / 2,
-                                    obstaclePos.z - CUBE_SIZE / 2 },
-                        (Vector3) { obstaclePos.x + CUBE_SIZE / 2,
-                                    obstaclePos.y + CUBE_SIZE / 2,
-                                    obstaclePos.z + CUBE_SIZE / 2 } });
+        (BoundingBox){
+            (Vector3){ playerPos.x - CUBE_SIZE / 2, playerPos.y - CUBE_SIZE / 2,
+                       playerPos.z - CUBE_SIZE / 2 },
+            (Vector3){ playerPos.x + CUBE_SIZE / 2, playerPos.y + CUBE_SIZE / 2,
+                       playerPos.z + CUBE_SIZE / 2 } },
+        (BoundingBox){ (Vector3){ obstaclePos.x - CUBE_SIZE / 2,
+                                  obstaclePos.y - CUBE_SIZE / 2,
+                                  obstaclePos.z - CUBE_SIZE / 2 },
+                       (Vector3){ obstaclePos.x + CUBE_SIZE / 2,
+                                  obstaclePos.y + CUBE_SIZE / 2,
+                                  obstaclePos.z + CUBE_SIZE / 2 } });
 }
 
 namespace camera
 {
-constexpr Vector3 POSITION { 0.0F, 5.0F, 10.0F };
-constexpr float FOV { 45.0F };
+constexpr Vector3 POSITION{ 0.0F, 5.0F, 10.0F };
+constexpr float FOV{ 45.0F };
 } // namespace camera
 } // namespace
 
@@ -84,10 +83,10 @@ void World::initializeCamera()
     m_camera.position = camera::POSITION;
 
     // Camera looking at point
-    m_camera.target = (Vector3) { 0.0F, 1.0F, 0.0F };
+    m_camera.target = (Vector3){ 0.0F, 1.0F, 0.0F };
 
     // Camera up vector (rotation towards target)
-    m_camera.up = (Vector3) { 0.0F, 1.0F, 0.0F };
+    m_camera.up = (Vector3){ 0.0F, 1.0F, 0.0F };
 
     // Camera field-of-view Y
     m_camera.fovy = camera::FOV;
@@ -98,7 +97,7 @@ void World::initializeCamera()
 
 void World::initializeObstacles()
 {
-    for (int i { 0 }; i < MAX_OBSTACLES; ++i)
+    for (int i{ 0 }; i < MAX_OBSTACLES; ++i)
     {
         Obstacle obs;
         m_obstacles.push_back(obs);
@@ -149,9 +148,9 @@ void World::viewScore() const
 
 void World::drawGround()
 {
-    float groundWidth { (constants::CUBE_SIZE * 3.5F) + constants::GROUND_GAP };
-    Vector2 groundSize { groundWidth, static_cast<float>(GetScreenHeight()) };
-    DrawPlane((Vector3) { 0.0F, -constants::CUBE_SIZE, 0.0F }, groundSize,
+    float groundWidth{ (constants::CUBE_SIZE * 3.5F) + constants::GROUND_GAP };
+    Vector2 groundSize{ groundWidth, static_cast<float>(GetScreenHeight()) };
+    DrawPlane((Vector3){ 0.0F, -constants::CUBE_SIZE, 0.0F }, groundSize,
               LIGHTGRAY);
 }
 
