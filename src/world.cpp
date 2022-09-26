@@ -109,11 +109,11 @@ void World::handlePlayerMovement()
 {
     if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A))
     {
-        m_player.move(Direction::Left);
+        m_player.move(Direction::left);
     }
     else if (IsKeyPressed(KEY_RIGHT) || IsKeyPressed(KEY_D))
     {
-        m_player.move(Direction::Right);
+        m_player.move(Direction::right);
     }
 }
 

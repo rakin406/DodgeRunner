@@ -24,12 +24,12 @@ void Player::move(Direction direction)
         float distance { constants::CUBE_SIZE + constants::GROUND_GAP / 2 };
 
         // Check direction and don't go beyond row boundary
-        if (direction == Direction::Left && row > LEFT_ROW)
+        if (direction == Direction::left && row > LEFT_ROW)
         {
             newPosition.x -= distance;
             m_currentRow = row - 1; // Shift row to left
         }
-        else if (direction == Direction::Right && row < RIGHT_ROW)
+        else if (direction == Direction::right && row < RIGHT_ROW)
         {
             newPosition.x += distance;
             m_currentRow = row + 1; // Shift row to right

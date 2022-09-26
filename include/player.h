@@ -8,8 +8,8 @@
  */
 enum class Direction
 {
-    Left,
-    Right
+    left,
+    right
 };
 
 /**
