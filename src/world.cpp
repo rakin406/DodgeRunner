@@ -99,7 +99,7 @@ void World::initializeCamera()
 
 void World::initializeObstacles()
 {
-    for (int i = 0; i < MAX_OBSTACLES; ++i)
+    for (int i { 0 }; i < MAX_OBSTACLES; ++i)
     {
         Obstacle obs;
         m_obstacles.push_back(obs);
