@@ -10,9 +10,10 @@ constexpr int MAX_START_POS { -200 };
 constexpr float DEFAULT_SPEED { 1.0F };
 
 // The middle row position is 0.0F
-constexpr std::array<float, 3> ROW_POSITIONS { -g_CUBE_SIZE - g_GROUND_GAP / 2,
-                                               0.0F,
-                                               g_CUBE_SIZE + g_GROUND_GAP / 2 };
+constexpr std::array<float, 3> ROW_POSITIONS {
+    -constants::CUBE_SIZE - constants::GROUND_GAP / 2, 0.0F,
+    constants::CUBE_SIZE + constants::GROUND_GAP / 2
+};
 } // namespace
 
 Obstacle::Obstacle() : m_speed(DEFAULT_SPEED) { this->resetPosition(); }
@@ -34,7 +35,7 @@ void Obstacle::loopTowardsViewer()
     // TODO: Refactor this code to ACTUALLY reach screen height and NOT count on
     // cube size.
     // Reset position if obstacle reaches screen height
-    if (m_position.z >= g_CUBE_SIZE * 2)
+    if (m_position.z >= constants::CUBE_SIZE * 2)
     {
         this->resetPosition();
     }
@@ -65,6 +66,8 @@ void Obstacle::resetPosition()
 
 void Obstacle::draw() const
 {
-    DrawCube(m_position, g_CUBE_SIZE, g_CUBE_SIZE, g_CUBE_SIZE, RED);
-    DrawCubeWires(m_position, g_CUBE_SIZE, g_CUBE_SIZE, g_CUBE_SIZE, BLACK);
+    DrawCube(m_position, constants::CUBE_SIZE, constants::CUBE_SIZE,
+             constants::CUBE_SIZE, RED);
+    DrawCubeWires(m_position, constants::CUBE_SIZE, constants::CUBE_SIZE,
+                  constants::CUBE_SIZE, BLACK);
 }

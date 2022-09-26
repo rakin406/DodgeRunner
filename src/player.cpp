@@ -21,7 +21,7 @@ void Player::move(Direction direction)
 
     {
         int row { m_currentRow }; // Get current row of player
-        float distance { g_CUBE_SIZE + g_GROUND_GAP / 2 };
+        float distance { constants::CUBE_SIZE + constants::GROUND_GAP / 2 };
 
         // Check direction and don't go beyond row boundary
         if (direction == Direction::Left && row > LEFT_ROW)
@@ -42,6 +42,8 @@ void Player::move(Direction direction)
 
 void Player::draw() const
 {
-    DrawCube(m_position, g_CUBE_SIZE, g_CUBE_SIZE, g_CUBE_SIZE, BLUE);
-    DrawCubeWires(m_position, g_CUBE_SIZE, g_CUBE_SIZE, g_CUBE_SIZE, BLACK);
+    DrawCube(m_position, constants::CUBE_SIZE, constants::CUBE_SIZE,
+             constants::CUBE_SIZE, BLUE);
+    DrawCubeWires(m_position, constants::CUBE_SIZE, constants::CUBE_SIZE,
+                  constants::CUBE_SIZE, BLACK);
 }

@@ -34,18 +34,19 @@ bool checkCollision(const Player &player, const Obstacle &obstacle)
     Vector3 obstaclePos { obstacle.getPosition() };
 
     return CheckCollisionBoxes(
-        (BoundingBox) { (Vector3) { playerPos.x - g_CUBE_SIZE / 2,
-                                    playerPos.y - g_CUBE_SIZE / 2,
-                                    playerPos.z - g_CUBE_SIZE / 2 },
-                        (Vector3) { playerPos.x + g_CUBE_SIZE / 2,
-                                    playerPos.y + g_CUBE_SIZE / 2,
-                                    playerPos.z + g_CUBE_SIZE / 2 } },
-        (BoundingBox) { (Vector3) { obstaclePos.x - g_CUBE_SIZE / 2,
-                                    obstaclePos.y - g_CUBE_SIZE / 2,
-                                    obstaclePos.z - g_CUBE_SIZE / 2 },
-                        (Vector3) { obstaclePos.x + g_CUBE_SIZE / 2,
-                                    obstaclePos.y + g_CUBE_SIZE / 2,
-                                    obstaclePos.z + g_CUBE_SIZE / 2 } });
+        (BoundingBox) { (Vector3) { playerPos.x - constants::CUBE_SIZE / 2,
+                                    playerPos.y - constants::CUBE_SIZE / 2,
+                                    playerPos.z - constants::CUBE_SIZE / 2 },
+                        (Vector3) { playerPos.x + constants::CUBE_SIZE / 2,
+                                    playerPos.y + constants::CUBE_SIZE / 2,
+                                    playerPos.z + constants::CUBE_SIZE / 2 } },
+        (BoundingBox) {
+            (Vector3) { obstaclePos.x - constants::CUBE_SIZE / 2,
+                        obstaclePos.y - constants::CUBE_SIZE / 2,
+                        obstaclePos.z - constants::CUBE_SIZE / 2 },
+            (Vector3) { obstaclePos.x + constants::CUBE_SIZE / 2,
+                        obstaclePos.y + constants::CUBE_SIZE / 2,
+                        obstaclePos.z + constants::CUBE_SIZE / 2 } });
 }
 
 namespace camera
@@ -147,14 +148,16 @@ void World::updateObstacles()
 
 void World::viewScore() const
 {
-    DrawText(TextFormat("Score: %i", m_score), 15, 15, g_FONT_SIZE, BLACK);
+    DrawText(TextFormat("Score: %i", m_score), 15, 15, constants::FONT_SIZE,
+             BLACK);
 }
 
 void World::drawGround()
 {
-    float groundWidth { (g_CUBE_SIZE * 3.5F) + g_GROUND_GAP };
+    float groundWidth { (constants::CUBE_SIZE * 3.5F) + constants::GROUND_GAP };
     Vector2 groundSize { groundWidth, static_cast<float>(GetScreenHeight()) };
-    DrawPlane((Vector3) { 0.0F, -g_CUBE_SIZE, 0.0F }, groundSize, LIGHTGRAY);
+    DrawPlane((Vector3) { 0.0F, -constants::CUBE_SIZE, 0.0F }, groundSize,
+              LIGHTGRAY);
 }
 
 void World::drawObstacles()
