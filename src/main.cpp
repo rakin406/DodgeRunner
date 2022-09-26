@@ -14,21 +14,15 @@ constexpr int SCREEN_HEIGHT { 750 };
 
 int main()
 {
-    // Set window settings
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_MSAA_4X_HINT);
-
-    // Initialize window
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE.data());
 
-    // Initialize world
     World world;
 
     SetTargetFPS(60);
 
-    // Main game loop
     while (!WindowShouldClose()) // Detect window close button or ESC key
     {
-        // Start world
         world.play();
     }
 

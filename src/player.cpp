@@ -36,7 +36,6 @@ void Player::move(Direction direction)
         }
     }
 
-    // Set player position
     m_position = newPosition;
 }
 

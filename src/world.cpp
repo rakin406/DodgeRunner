@@ -28,9 +28,7 @@ constexpr float SPEED_INCREMENT { 0.5F };
  */
 bool checkCollision(const Player &player, const Obstacle &obstacle)
 {
-    // Get player position
     Vector3 playerPos { player.getPosition() };
-    // Get obstacle position
     Vector3 obstaclePos { obstacle.getPosition() };
 
     return CheckCollisionBoxes(
@@ -58,7 +56,6 @@ constexpr float FOV { 45.0F };
 
 World::World() : m_obstacles({})
 {
-    // Set a custom random seed for random number generation.
     // Needed for random obstacle position.
     SetRandomSeed(0xaabbccff);
 
@@ -71,15 +68,13 @@ World::World() : m_obstacles({})
 
 void World::play()
 {
-    // Stop movement if game is over
     if (!m_gameOver)
     {
         this->handlePlayerMovement();
         this->updateObstacles();
-        ++m_score; // Increase score
+        ++m_score;
     }
 
-    // Finally draw the world
     this->draw();
 }
 
@@ -112,12 +107,10 @@ void World::initializeObstacles()
 
 void World::handlePlayerMovement()
 {
-    // Move left
     if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A))
     {
         m_player.move(Direction::Left);
     }
-    // Move right
     else if (IsKeyPressed(KEY_RIGHT) || IsKeyPressed(KEY_D))
     {
         m_player.move(Direction::Right);
@@ -126,10 +119,9 @@ void World::handlePlayerMovement()
 
 void World::updateObstacles()
 {
-    // Loop all obstacles
     for (auto &elem : m_obstacles)
     {
-        // Move obstacles towards viewer
+        // Move obstacle towards viewer
         elem.loopTowardsViewer();
 
         // Increase speed of obstacles according to score
@@ -148,6 +140,7 @@ void World::updateObstacles()
 
 void World::viewScore() const
 {
+    // Draw score text at top left of screen
     DrawText(TextFormat("Score: %i", m_score), 15, 15, constants::FONT_SIZE,
              BLACK);
 }
@@ -162,7 +155,6 @@ void World::drawGround()
 
 void World::drawObstacles()
 {
-    // Loop all obstacles
     for (auto &elem : m_obstacles)
     {
         elem.draw();
@@ -173,22 +165,14 @@ void World::draw()
 {
     BeginDrawing();
 
-    // Clear background
     ClearBackground(RAYWHITE);
 
-    // View score at top left
     this->viewScore();
 
-    // Start viewing in 3D
     BeginMode3D(m_camera);
 
-    // Draw the ground/floor
     this->drawGround();
-
-    // Draw player cube
     m_player.draw();
-
-    // Draw obstacle cubes
     this->drawObstacles();
 
     EndMode3D();

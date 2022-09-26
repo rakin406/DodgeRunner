@@ -46,21 +46,13 @@ void Obstacle::resetPosition()
     Vector3 startingPosition {};
 
     {
-        // Get random row index
         int randomRowIndex { GetRandomValue(0, ROW_POSITIONS.size() - 1) };
-
-        // Get random row
         float randomRow { ROW_POSITIONS[randomRowIndex] };
-
-        // Get a random column, which is forward or backward, the z-axis
         auto randomColumn { static_cast<float>(
             GetRandomValue(MIN_START_POS, MAX_START_POS)) };
-
-        // Combine both positions
         startingPosition = { randomRow, 0.0F, randomColumn };
     }
 
-    // Set random position
     m_position = startingPosition;
 }
 
