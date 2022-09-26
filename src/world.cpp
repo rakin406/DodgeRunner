@@ -25,7 +25,7 @@ constexpr float SPEED_INCREMENT { 0.5F };
  *
  * @return boolean.
  */
-bool checkCollision(const Player &player, const Obstacle &obstacle)
+bool checkCollision(const Player& player, const Obstacle& obstacle)
 {
     using constants::CUBE_SIZE;
 
@@ -119,7 +119,7 @@ void World::handlePlayerMovement()
 
 void World::updateObstacles()
 {
-    for (auto &elem : m_obstacles)
+    for (auto& elem : m_obstacles)
     {
         // Move obstacle towards viewer
         elem.loopTowardsViewer();
@@ -155,7 +155,7 @@ void World::drawGround()
 
 void World::drawObstacles()
 {
-    for (auto &elem : m_obstacles)
+    for (auto& elem : m_obstacles)
     {
         elem.draw();
     }
