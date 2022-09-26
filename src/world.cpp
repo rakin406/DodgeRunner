@@ -107,8 +107,6 @@ void World::initializeObstacles()
 
 void World::handlePlayerMovement()
 {
-    using direction::Direction;
-
     if (IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A))
     {
         m_player.move(Direction::left);
