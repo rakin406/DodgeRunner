@@ -16,7 +16,7 @@ constexpr std::array<float, 3> ROW_POSITIONS {
 };
 } // namespace
 
-Obstacle::Obstacle() : m_speed(DEFAULT_SPEED) { this->resetPosition(); }
+Obstacle::Obstacle() : m_speed(DEFAULT_SPEED) { resetPosition(); }
 
 Vector3 Obstacle::getPosition() const { return m_position; }
 
@@ -37,7 +37,7 @@ void Obstacle::loopTowardsViewer()
     // Reset position if obstacle reaches screen height
     if (m_position.z >= constants::CUBE_SIZE * 2)
     {
-        this->resetPosition();
+        resetPosition();
     }
 }
 

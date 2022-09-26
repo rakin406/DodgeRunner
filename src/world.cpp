@@ -60,22 +60,22 @@ World::World() : m_obstacles({})
     SetRandomSeed(0xaabbccff);
 
     // Create 3D camera
-    this->initializeCamera();
+    initializeCamera();
 
     // Create obstacle cubes
-    this->initializeObstacles();
+    initializeObstacles();
 }
 
 void World::play()
 {
     if (!m_gameOver)
     {
-        this->handlePlayerMovement();
-        this->updateObstacles();
+        handlePlayerMovement();
+        updateObstacles();
         ++m_score;
     }
 
-    this->draw();
+    draw();
 }
 
 void World::initializeCamera()
@@ -167,13 +167,13 @@ void World::draw()
 
     ClearBackground(RAYWHITE);
 
-    this->viewScore();
+    viewScore();
 
     BeginMode3D(m_camera);
 
-    this->drawGround();
+    drawGround();
     m_player.draw();
-    this->drawObstacles();
+    drawObstacles();
 
     EndMode3D();
 
