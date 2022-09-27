@@ -16,7 +16,7 @@ int main()
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_MSAA_4X_HINT);
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE.data());
 
-    World world;
+    World world{};
 
     SetTargetFPS(60);
 
