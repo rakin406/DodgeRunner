@@ -10,7 +10,7 @@ constexpr int MAX_START_POS{ -200 };
 constexpr float DEFAULT_SPEED{ 1.0F };
 
 // The middle row position is 0.0F
-constexpr std::array<float, 3> ROW_POSITIONS{
+constexpr std::array ROW_POSITIONS{
     -constants::CUBE_SIZE - constants::GROUND_GAP / 2, 0.0F,
     constants::CUBE_SIZE + constants::GROUND_GAP / 2
 };
