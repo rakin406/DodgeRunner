@@ -16,6 +16,10 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3 -fdelete-null-pointer-checks")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Load module for speeding up builds
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+include(cotire)
+
 # Add dependencies
 include(cmake/CPM.cmake)
 CPMAddPackage(
@@ -29,6 +33,7 @@ add_executable(${PROJECT_NAME} src/main.cpp src/world.cpp src/player.cpp
     src/obstacle.cpp)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 target_link_libraries(${PROJECT_NAME} raylib)
+cotire(${PROJECT_NAME})
 
 if (MSVC)
     # Warning level 4 and warnings as errors
