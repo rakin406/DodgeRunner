@@ -3,9 +3,9 @@
 
 namespace
 {
-constexpr int LEFT_ROW{ 1 };
-constexpr int MIDDLE_ROW{ 2 };
-constexpr int RIGHT_ROW{ 3 };
+    constexpr int LEFT_ROW{ 1 };
+    constexpr int MIDDLE_ROW{ 2 };
+    constexpr int RIGHT_ROW{ 3 };
 } // namespace
 
 Player::Player() : m_currentRow(MIDDLE_ROW)

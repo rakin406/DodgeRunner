@@ -5,15 +5,15 @@
 
 namespace
 {
-constexpr int MIN_START_POS{ -800 };
-constexpr int MAX_START_POS{ -200 };
-constexpr float DEFAULT_SPEED{ 1.0F };
+    constexpr int MIN_START_POS{ -800 };
+    constexpr int MAX_START_POS{ -200 };
+    constexpr float DEFAULT_SPEED{ 1.0F };
 
-// The middle row position is 0.0F
-constexpr std::array ROW_POSITIONS{
-    -constants::CUBE_SIZE - constants::GROUND_GAP / 2, 0.0F,
-    constants::CUBE_SIZE + constants::GROUND_GAP / 2
-};
+    // The middle row position is 0.0F
+    constexpr std::array ROW_POSITIONS{
+        -constants::CUBE_SIZE - constants::GROUND_GAP / 2, 0.0F,
+        constants::CUBE_SIZE + constants::GROUND_GAP / 2
+    };
 } // namespace
 
 Obstacle::Obstacle() : m_speed(DEFAULT_SPEED) { resetPosition(); }

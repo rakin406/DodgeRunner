@@ -6,51 +6,51 @@
 
 namespace
 {
+    constexpr int MAX_OBSTACLES{ 10 };
 
-constexpr int MAX_OBSTACLES{ 10 };
+    // NOTE: It doesn't increment... This is used for division and the reminder
+    // is used for increasing speed. I just need a better name for this
+    // variable... After the specified score, increase the obstacle speed.
+    constexpr int SCORE_INCREMENT{ 5000 };
 
-// NOTE: It doesn't increment... This is used for division and the reminder is
-// used for increasing speed. I just need a better name for this variable...
-// After the specified score, increase the obstacle speed.
-constexpr int SCORE_INCREMENT{ 5000 };
+    // Used for incrementing to the original speed
+    constexpr float SPEED_INCREMENT{ 0.5F };
 
-// Used for incrementing to the original speed
-constexpr float SPEED_INCREMENT{ 0.5F };
+    /**
+     * @brief Return true if player cube collides with obstacle.
+     *
+     * @param player Player cube.
+     * @param obstacle Obstacle.
+     *
+     * @return boolean.
+     */
+    bool checkCollision(const Player& player, const Obstacle& obstacle)
+    {
+        using constants::CUBE_SIZE;
 
-/**
- * @brief Return true if player cube collides with obstacle.
- *
- * @param player Player cube.
- * @param obstacle Obstacle.
- *
- * @return boolean.
- */
-bool checkCollision(const Player& player, const Obstacle& obstacle)
-{
-    using constants::CUBE_SIZE;
+        Vector3 playerPos{ player.getPosition() };
+        Vector3 obstaclePos{ obstacle.getPosition() };
 
-    Vector3 playerPos{ player.getPosition() };
-    Vector3 obstaclePos{ obstacle.getPosition() };
+        return CheckCollisionBoxes(
+            (BoundingBox){ (Vector3){ playerPos.x - CUBE_SIZE / 2,
+                                      playerPos.y - CUBE_SIZE / 2,
+                                      playerPos.z - CUBE_SIZE / 2 },
+                           (Vector3){ playerPos.x + CUBE_SIZE / 2,
+                                      playerPos.y + CUBE_SIZE / 2,
+                                      playerPos.z + CUBE_SIZE / 2 } },
+            (BoundingBox){ (Vector3){ obstaclePos.x - CUBE_SIZE / 2,
+                                      obstaclePos.y - CUBE_SIZE / 2,
+                                      obstaclePos.z - CUBE_SIZE / 2 },
+                           (Vector3){ obstaclePos.x + CUBE_SIZE / 2,
+                                      obstaclePos.y + CUBE_SIZE / 2,
+                                      obstaclePos.z + CUBE_SIZE / 2 } });
+    }
 
-    return CheckCollisionBoxes(
-        (BoundingBox){
-            (Vector3){ playerPos.x - CUBE_SIZE / 2, playerPos.y - CUBE_SIZE / 2,
-                       playerPos.z - CUBE_SIZE / 2 },
-            (Vector3){ playerPos.x + CUBE_SIZE / 2, playerPos.y + CUBE_SIZE / 2,
-                       playerPos.z + CUBE_SIZE / 2 } },
-        (BoundingBox){ (Vector3){ obstaclePos.x - CUBE_SIZE / 2,
-                                  obstaclePos.y - CUBE_SIZE / 2,
-                                  obstaclePos.z - CUBE_SIZE / 2 },
-                       (Vector3){ obstaclePos.x + CUBE_SIZE / 2,
-                                  obstaclePos.y + CUBE_SIZE / 2,
-                                  obstaclePos.z + CUBE_SIZE / 2 } });
-}
-
-namespace camera
-{
-constexpr Vector3 POSITION{ 0.0F, 5.0F, 10.0F };
-constexpr float FOV{ 45.0F };
-} // namespace camera
+    namespace camera
+    {
+        constexpr Vector3 POSITION{ 0.0F, 5.0F, 10.0F };
+        constexpr float FOV{ 45.0F };
+    } // namespace camera
 } // namespace
 
 World::World() : m_obstacles({})
