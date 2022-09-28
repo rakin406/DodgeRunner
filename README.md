@@ -18,7 +18,7 @@ git clone https://github.com/rakin406/DodgeRunner.git && cd DodgeRunner
 mkdir build && cd build
 cmake .. -G Ninja
 ninja
-./bin/DodgeRunner
+./DodgeRunner
 ```
 
 ## Author
