@@ -7,7 +7,6 @@ A dodging game.
 ### Dependencies
 
 * Clang or GCC compiler
-* Conan
 * CMake
 * Ninja
 
@@ -17,7 +16,6 @@ A dodging game.
 ```bash
 git clone https://github.com/rakin406/DodgeRunner.git && cd DodgeRunner
 mkdir build && cd build
-conan install .. --build=missing
 cmake .. -G Ninja
 ninja
 ./bin/DodgeRunner
