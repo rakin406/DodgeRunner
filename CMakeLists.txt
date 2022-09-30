@@ -3,14 +3,20 @@ project(DodgeRunner)
 
 cmake_policy(SET CMP0054 NEW)
 
+# Generate compile_commands.json
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # Set default build type
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug)
 endif()
 
+message(STATUS ${CMAKE_BUILD_TYPE})
+
 # Build type flags
 set(CMAKE_CXX_FLAGS_DEBUG "-g3")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+string(APPEND CMAKE_CXX_FLAGS " -Wall -Wextra -pedantic -Werror")
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 20)
@@ -35,11 +41,3 @@ add_executable(${PROJECT_NAME} src/main.cpp src/world.cpp src/player.cpp
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 target_link_libraries(${PROJECT_NAME} raylib)
 cotire(${PROJECT_NAME})
-
-if (MSVC)
-    # Warning level 4 and all warnings as errors
-    add_compile_options(/W4 /Wx)
-else()
-    # Lots of warnings and all warnings as errors
-    add_compile_options(-Wall -Wextra -pedantic -Werror)
-endif()
