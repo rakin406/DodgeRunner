@@ -32,18 +32,14 @@ namespace
         Vector3 obstaclePos{ obstacle.getPosition() };
 
         return CheckCollisionBoxes(
-            (BoundingBox){ (Vector3){ playerPos.x - CUBE_SIZE / 2,
-                                      playerPos.y - CUBE_SIZE / 2,
-                                      playerPos.z - CUBE_SIZE / 2 },
-                           (Vector3){ playerPos.x + CUBE_SIZE / 2,
-                                      playerPos.y + CUBE_SIZE / 2,
-                                      playerPos.z + CUBE_SIZE / 2 } },
-            (BoundingBox){ (Vector3){ obstaclePos.x - CUBE_SIZE / 2,
-                                      obstaclePos.y - CUBE_SIZE / 2,
-                                      obstaclePos.z - CUBE_SIZE / 2 },
-                           (Vector3){ obstaclePos.x + CUBE_SIZE / 2,
-                                      obstaclePos.y + CUBE_SIZE / 2,
-                                      obstaclePos.z + CUBE_SIZE / 2 } });
+            { { playerPos.x - CUBE_SIZE / 2, playerPos.y - CUBE_SIZE / 2,
+                playerPos.z - CUBE_SIZE / 2 },
+              { playerPos.x + CUBE_SIZE / 2, playerPos.y + CUBE_SIZE / 2,
+                playerPos.z + CUBE_SIZE / 2 } },
+            { { obstaclePos.x - CUBE_SIZE / 2, obstaclePos.y - CUBE_SIZE / 2,
+                obstaclePos.z - CUBE_SIZE / 2 },
+              { obstaclePos.x + CUBE_SIZE / 2, obstaclePos.y + CUBE_SIZE / 2,
+                obstaclePos.z + CUBE_SIZE / 2 } });
     }
 
     namespace camera
@@ -83,10 +79,10 @@ void World::initializeCamera()
     m_camera.position = camera::POSITION;
 
     // Camera looking at point
-    m_camera.target = (Vector3){ 0.0F, 1.0F, 0.0F };
+    m_camera.target = { 0.0F, 1.0F, 0.0F };
 
     // Camera up vector (rotation towards target)
-    m_camera.up = (Vector3){ 0.0F, 1.0F, 0.0F };
+    m_camera.up = { 0.0F, 1.0F, 0.0F };
 
     // Camera field-of-view Y
     m_camera.fovy = camera::FOV;
@@ -150,8 +146,7 @@ void World::drawGround()
 {
     float groundWidth{ (constants::CUBE_SIZE * 3.5F) + constants::GROUND_GAP };
     Vector2 groundSize{ groundWidth, static_cast<float>(GetScreenHeight()) };
-    DrawPlane((Vector3){ 0.0F, -constants::CUBE_SIZE, 0.0F }, groundSize,
-              LIGHTGRAY);
+    DrawPlane({ 0.0F, -constants::CUBE_SIZE, 0.0F }, groundSize, LIGHTGRAY);
 }
 
 void World::drawObstacles()
